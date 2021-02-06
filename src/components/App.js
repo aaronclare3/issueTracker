@@ -16,11 +16,12 @@ const App = () => {
     setTodos(updatedTodos);
   };
 
-  const editTodo = (id, update, updateTopic) => {
+  const editTodo = (id, newTitle, newDescription) => {
     let updatedTodos = [...todos];
     for (let i in updatedTodos) {
       if (updatedTodos[i].id === id) {
-        updatedTodos[i][updateTopic] = update;
+        updatedTodos[i].title = newTitle;
+        updatedTodos[i].description = newDescription;
       }
     }
     setTodos(updatedTodos);

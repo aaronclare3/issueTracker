@@ -51,26 +51,26 @@ const TodoItem = ({ todo, changeStatus, editTodo }) => {
           </svg>
         </div>
         <div className='card-body'>
-          <h4 className='card-title'>
-            {todo.status === "todo" || todo.status === "inProgress" ? (
-              <button
-                className='btn btn-success'
-                onClick={() => moveItem(todo.id, todo.status, "advance")}>
-                Advance
-              </button>
-            ) : (
-              ""
-            )}
-            {todo.status === "inProgress" || todo.status === "completed" ? (
-              <button
-                className='btn btn-danger'
-                onClick={() => moveItem(todo.id, todo.status, "goBack")}>
-                Go Back
-              </button>
-            ) : (
-              ""
-            )}
-          </h4>
+          <h4 className='card-title'></h4>
+          <p className='card-text'>{todo.description}</p>
+          {todo.status === "todo" || todo.status === "inProgress" ? (
+            <button
+              className='btn btn-success'
+              onClick={() => moveItem(todo.id, todo.status, "advance")}>
+              Advance
+            </button>
+          ) : (
+            ""
+          )}
+          {todo.status === "inProgress" || todo.status === "completed" ? (
+            <button
+              className='btn btn-danger'
+              onClick={() => moveItem(todo.id, todo.status, "goBack")}>
+              Go Back
+            </button>
+          ) : (
+            ""
+          )}
         </div>
       </div>
       <TodoModal

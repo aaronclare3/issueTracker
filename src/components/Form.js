@@ -13,6 +13,7 @@ const Form = ({ getTodoFromForm }) => {
       status: "todo",
     });
     setTodoTitle("");
+    setTodoDescription("");
   };
   return (
     <form onSubmit={(e) => handleSubmit(e)}>
