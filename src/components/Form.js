@@ -20,7 +20,7 @@ const Form = ({ getTodoFromForm }) => {
   };
   return (
     <div className='container'>
-      <form class='form' onSubmit={(e) => handleSubmit(e)}>
+      <form className='form' onSubmit={(e) => handleSubmit(e)}>
         <input
           className='form-control'
           type='text'

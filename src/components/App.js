@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../styles/App.css";
 // components
 import TodoList from "./TodoList";
 import Form from "./Form";
@@ -33,9 +34,15 @@ const App = () => {
   };
 
   return (
-    <div>
-      <Form getTodoFromForm={getTodoFromForm} />
-      <TodoList editTodo={editTodo} todos={todos} changeStatus={changeStatus} />
+    <div className='big-image'>
+      <div className='overlay'>
+        <Form getTodoFromForm={getTodoFromForm} />
+        <TodoList
+          editTodo={editTodo}
+          todos={todos}
+          changeStatus={changeStatus}
+        />
+      </div>
     </div>
   );
 };
