@@ -4,10 +4,16 @@ import { Modal, Button } from "react-bootstrap";
 const TodoModal = ({ todo, show, handleClose, editTodo }) => {
   const [title, setTitle] = useState(todo && todo.title);
   const [description, setDescription] = useState(todo && todo.description);
+  const [priority, setPriority] = useState(todo && todo.priority);
   const handleUpdates = () => {
     const updatedTitle = title;
     const updatedDescription = description;
-    editTodo(todo.id, updatedTitle, updatedDescription);
+    const updatedPriority = priority;
+    editTodo(todo.id, updatedTitle, updatedDescription, updatedPriority);
+  };
+  const closeAndUpdate = () => {
+    handleClose();
+    handleUpdates();
   };
   return (
     <>
@@ -28,12 +34,21 @@ const TodoModal = ({ todo, show, handleClose, editTodo }) => {
             type='text'
             onChange={(e) => setDescription(e.target.value)}
             value={description}></textarea>
+          <select
+            value={priority}
+            className='form-select'
+            onChange={(e) => setPriority(e.target.value)}>
+            <option value='Low'>Low</option>
+            <option value='Medium'>Medium</option>
+            <option value='High'>High</option>
+            <option value='Urgent'>Urgent</option>
+          </select>
         </Modal.Body>
         <Modal.Footer>
           <Button variant='secondary' onClick={handleClose}>
             Close
           </Button>
-          <Button variant='primary' onClick={(handleClose, handleUpdates)}>
+          <Button variant='primary' onClick={closeAndUpdate}>
             Save Changes
           </Button>
         </Modal.Footer>

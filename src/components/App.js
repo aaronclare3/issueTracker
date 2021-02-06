@@ -16,12 +16,13 @@ const App = () => {
     setTodos(updatedTodos);
   };
 
-  const editTodo = (id, newTitle, newDescription) => {
+  const editTodo = (id, newTitle, newDescription, newPriority) => {
     let updatedTodos = [...todos];
     for (let i in updatedTodos) {
       if (updatedTodos[i].id === id) {
         updatedTodos[i].title = newTitle;
         updatedTodos[i].description = newDescription;
+        updatedTodos[i].priority = newPriority;
       }
     }
     setTodos(updatedTodos);
@@ -32,7 +33,7 @@ const App = () => {
   };
 
   return (
-    <div className='container'>
+    <div>
       <Form getTodoFromForm={getTodoFromForm} />
       <TodoList editTodo={editTodo} todos={todos} changeStatus={changeStatus} />
     </div>

@@ -47,10 +47,8 @@ const TodoList = ({ todos, changeStatus, editTodo }) => {
       );
     });
   return (
-    <div style={{ border: "1px solid black" }} className='row '>
-      <div
-        style={{ textAlign: "center", border: "1px solid blue" }}
-        className='col'>
+    <div className='row'>
+      <div style={{ textAlign: "center" }} className='col'>
         <h1>Todos</h1>
         {renderTodos}
       </div>
