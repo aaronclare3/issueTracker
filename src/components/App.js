@@ -34,15 +34,9 @@ const App = () => {
   };
 
   return (
-    <div className='big-image'>
-      <div className='overlay'>
-        <Form getTodoFromForm={getTodoFromForm} />
-        <TodoList
-          editTodo={editTodo}
-          todos={todos}
-          changeStatus={changeStatus}
-        />
-      </div>
+    <div className='m-5'>
+      <Form getTodoFromForm={getTodoFromForm} />
+      <TodoList editTodo={editTodo} todos={todos} changeStatus={changeStatus} />
     </div>
   );
 };
