@@ -1,5 +1,5 @@
 import React from "react";
-import TodoItem from "./TodoItem";
+import TodoItem from "./IssueItem";
 
 const CompletedList = ({ completed }) => {
   const renderCompleted = completed.map((todo) => {

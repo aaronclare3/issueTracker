@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { v4 as uuid } from "uuid";
 
-const Form = ({ getTodoFromForm }) => {
+const IssueForm = ({ getTodoFromForm }) => {
   const [todoTitle, setTodoTitle] = useState("");
   const [todoDescription, setTodoDescription] = useState("");
   const [todoPriority, setTodoPriority] = useState("");
@@ -51,4 +51,4 @@ const Form = ({ getTodoFromForm }) => {
   );
 };
 
-export default Form;
+export default IssueForm;

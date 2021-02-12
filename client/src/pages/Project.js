@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import "../styles/App.css";
 
 // components
-import TodoList from "../components/TodoList";
-import Form from "../components/Form";
+import IssueList from "../components/IssueList";
+import IssueForm from "../components/IssueForm";
 
 const Project = () => {
   const [todos, setTodos] = useState([]);
@@ -36,8 +36,12 @@ const Project = () => {
 
   return (
     <div>
-      <Form getTodoFromForm={getTodoFromForm} />
-      <TodoList editTodo={editTodo} todos={todos} changeStatus={changeStatus} />
+      <IssueForm getTodoFromForm={getTodoFromForm} />
+      <IssueList
+        editTodo={editTodo}
+        todos={todos}
+        changeStatus={changeStatus}
+      />
     </div>
   );
 };

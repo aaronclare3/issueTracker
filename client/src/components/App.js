@@ -1,4 +1,5 @@
 import React from "react";
+import UsersProjects from "../pages/UsersProjects";
 import Project from "../pages/Project";
 import Dashboard from "../pages/Dashboard";
 import Sidebar from "./Sidebar";
@@ -10,7 +11,8 @@ const App = () => {
       <Router>
         <Sidebar />
         <Switch>
-          <Route path='/project' component={Project} />
+          <Route exact path='/project' component={Project} />
+          <Route path='/projects' component={UsersProjects} />
           <Route exact path='/' component={Dashboard} />
         </Switch>
       </Router>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 
-const TodoModal = ({ todo, show, handleClose, editTodo }) => {
+const IssueModal = ({ todo, show, handleClose, editTodo }) => {
   const [title, setTitle] = useState(todo && todo.title);
   const [description, setDescription] = useState(todo && todo.description);
   const [priority, setPriority] = useState(todo && todo.priority);
@@ -57,4 +57,4 @@ const TodoModal = ({ todo, show, handleClose, editTodo }) => {
   );
 };
 
-export default TodoModal;
+export default IssueModal;

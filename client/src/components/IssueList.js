@@ -1,15 +1,15 @@
 import React from "react";
 
 // components
-import TodoItem from "./TodoItem";
+import IssueItem from "./IssueItem";
 
-const TodoList = ({ todos, changeStatus, editTodo }) => {
+const IssueList = ({ todos, changeStatus, editTodo }) => {
   const renderTodos =
     todos.length > 0 &&
     todos.map((todo) => {
       return (
         todo.status === "todo" && (
-          <TodoItem
+          <IssueItem
             editTodo={editTodo}
             key={todo.id}
             todo={todo}
@@ -23,7 +23,7 @@ const TodoList = ({ todos, changeStatus, editTodo }) => {
     todos.map((todo) => {
       return (
         todo.status === "completed" && (
-          <TodoItem
+          <IssueItem
             editTodo={editTodo}
             key={todo.id}
             todo={todo}
@@ -37,7 +37,7 @@ const TodoList = ({ todos, changeStatus, editTodo }) => {
     todos.map((todo) => {
       return (
         todo.status === "inProgress" && (
-          <TodoItem
+          <IssueItem
             editTodo={editTodo}
             key={todo.id}
             todo={todo}
@@ -64,4 +64,4 @@ const TodoList = ({ todos, changeStatus, editTodo }) => {
   );
 };
 
-export default TodoList;
+export default IssueList;

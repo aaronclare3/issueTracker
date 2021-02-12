@@ -30,7 +30,7 @@ const Sidebar = () => {
             </Link>
           </li>
           <li className='side-list-item' onClick={toggleSidebar}>
-            <Link to='/project'>
+            <Link to='/projects'>
               <FaChalkboard className='fa' /> Boards
             </Link>
           </li>

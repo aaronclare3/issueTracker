@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 
-import TodoModal from "./TodoModal";
+import IssueModal from "./IssueModal";
 
-const TodoItem = ({ todo, changeStatus, editTodo }) => {
+const IssueItem = ({ todo, changeStatus, editTodo }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => {
     setShow(false);
@@ -91,7 +91,7 @@ const TodoItem = ({ todo, changeStatus, editTodo }) => {
           )}
         </div>
       </div>
-      <TodoModal
+      <IssueModal
         todo={todo}
         editTodo={editTodo}
         show={show}
@@ -101,4 +101,4 @@ const TodoItem = ({ todo, changeStatus, editTodo }) => {
   );
 };
 
-export default TodoItem;
+export default IssueItem;
