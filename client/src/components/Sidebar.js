@@ -31,14 +31,18 @@ const Sidebar = () => {
           </li>
           <li className='side-list-item' onClick={toggleSidebar}>
             <Link to='/project'>
-              <FaChalkboard className='fa' /> Board
+              <FaChalkboard className='fa' /> Boards
             </Link>
           </li>
           <li className='side-list-item' onClick={toggleSidebar}>
-            <Link to='/about'>About</Link>
+            <Link to='/about'>
+              <FaChalkboard className='fa' /> About
+            </Link>
           </li>
           <li className='side-list-item' onClick={toggleSidebar}>
-            <Link to='/contact'>Contact</Link>
+            <Link to='/contact'>
+              <FaChalkboard className='fa' /> Contact
+            </Link>
           </li>
         </ul>
       </div>
