@@ -1,19 +1,26 @@
 import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
+import { updateIssue } from "../redux/actions/issueActions";
+import { useDispatch } from "react-redux";
 
-const IssueModal = ({ todo, show, handleClose, editTodo }) => {
-  const [title, setTitle] = useState(todo && todo.title);
-  const [description, setDescription] = useState(todo && todo.description);
-  const [priority, setPriority] = useState(todo && todo.priority);
-  const handleUpdates = () => {
-    const updatedTitle = title;
-    const updatedDescription = description;
-    const updatedPriority = priority;
-    editTodo(todo.id, updatedTitle, updatedDescription, updatedPriority);
-  };
-  const closeAndUpdate = () => {
-    handleClose();
-    handleUpdates();
+const IssueModal = ({ issue, show, handleClose }) => {
+  const [title, setTitle] = useState(issue && issue.title);
+  const [description, setDescription] = useState(issue && issue.description);
+  const [priority, setPriority] = useState(issue && issue.priority);
+  const dispatch = useDispatch();
+
+  const handleModalClose = (option) => {
+    if (option === "nosave") {
+      // if user isn't saving we want to reset modal back to what it was
+      handleClose();
+      setTitle(issue.title);
+      setDescription(issue.description);
+      setPriority(issue.priority);
+    } else if (option === "save") {
+      // if they do save, handle issue update and close
+      dispatch(updateIssue({ title, description, priority }, issue._id));
+      handleClose();
+    }
   };
   return (
     <>
@@ -45,10 +52,12 @@ const IssueModal = ({ todo, show, handleClose, editTodo }) => {
           </select>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant='secondary' onClick={handleClose}>
+          <Button
+            variant='secondary'
+            onClick={() => handleModalClose("nosave")}>
             Close
           </Button>
-          <Button variant='primary' onClick={closeAndUpdate}>
+          <Button variant='primary' onClick={() => handleModalClose("save")}>
             Save Changes
           </Button>
         </Modal.Footer>

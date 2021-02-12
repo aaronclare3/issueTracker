@@ -24,12 +24,21 @@ export const projectReducer = (state = initialState, action) => {
       };
     case "UPDATE_ISSUE":
       const updatedIssue = action.payload;
-      const updatedIssueList = state.project.issues.map((issue) => {
+      const listUpdated = state.project.issues.map((issue) => {
         return issue._id === updatedIssue._id ? updatedIssue : issue;
       });
       return {
         ...state,
-        project: { ...state.project, issues: updatedIssueList },
+        project: { ...state.project, issues: listUpdated },
+      };
+    case "DELETE_ISSUE":
+      const deletedIssue = action.payload;
+      const listWithoutIssue = state.project.issues.filter((issue) => {
+        return issue._id !== deletedIssue._id;
+      });
+      return {
+        ...state,
+        project: { ...state.project, issues: listWithoutIssue },
       };
     default:
       return state;

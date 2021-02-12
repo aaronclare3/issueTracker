@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { updateIssue } from "../redux/actions/issueActions";
+import { updateIssue, deleteIssue } from "../redux/actions/issueActions";
 import { useDispatch } from "react-redux";
 
 import IssueModal from "./IssueModal";
@@ -50,6 +50,17 @@ const IssueItem = ({ issue }) => {
               ? "bg-primary"
               : "bg-info"
           }`}>
+          <svg
+            onClick={() => dispatch(deleteIssue(issue._id))}
+            style={{ cursor: "pointer" }}
+            xmlns='http://www.w3.org/2000/svg'
+            width='16'
+            height='16'
+            fill='currentColor'
+            className='bi bi-x-square-fill float-left'
+            viewBox='0 0 16 16'>
+            <path d='M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z' />
+          </svg>
           {issue.title}
           <svg
             onClick={handleShow}
@@ -68,28 +79,36 @@ const IssueItem = ({ issue }) => {
           <p className='card-text'>{issue.description}</p>
           {status === "Unassigned" || status === "InProgress" ? (
             <svg
+              style={{ cursor: "pointer" }}
               onClick={() => moveItem("advance")}
               xmlns='http://www.w3.org/2000/svg'
               width='22'
               height='22'
               fill='currentColor'
-              className='bi bi-arrow-right-square-fill float-right text-success'
+              class='bi bi-arrow-right-short float-right'
               viewBox='0 0 16 16'>
-              <path d='M0 14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v12zm4.5-6.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5a.5.5 0 0 1 0-1z' />
+              <path
+                fill-rule='evenodd'
+                d='M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z'
+              />
             </svg>
           ) : (
             ""
           )}
           {status === "InProgress" || status === "Completed" ? (
             <svg
+              style={{ cursor: "pointer" }}
               onClick={() => moveItem("goBack")}
               xmlns='http://www.w3.org/2000/svg'
               width='22'
               height='22'
               fill='currentColor'
-              className='bi bi-arrow-left-square-fill float-left text-danger'
+              class='bi bi-arrow-left-short float-left'
               viewBox='0 0 16 16'>
-              <path d='M16 14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12zm-4.5-6.5H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5a.5.5 0 0 0 0-1z' />
+              <path
+                fill-rule='evenodd'
+                d='M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z'
+              />
             </svg>
           ) : (
             ""

@@ -7,6 +7,7 @@ const IssueForm = ({ project }) => {
   const [issueDescription, setIssueDescription] = useState("");
   const [issuePriority, setIssuePriority] = useState("Low");
   const dispatch = useDispatch();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(
@@ -20,7 +21,7 @@ const IssueForm = ({ project }) => {
     );
     setIssueTitle("");
     setIssueDescription("");
-    setIssuePriority("");
+    setIssuePriority("Low");
   };
   return (
     <div className='container'>
@@ -42,6 +43,7 @@ const IssueForm = ({ project }) => {
         />
         <select
           className='form-select'
+          value={issuePriority}
           onChange={(e) => setIssuePriority(e.target.value)}>
           <option value='Low'>Low</option>
           <option value='Medium'>Medium</option>

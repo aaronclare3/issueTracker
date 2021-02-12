@@ -21,4 +21,9 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:4000/issues/6026d5c2cd6a99ae6ffff765
+DELETE http://localhost:4000/issues/6026f39c3aa0beb464c44d66
+
+###
+
+GET http://localhost:4000/projects
+
