@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import IssueModal from "./IssueModal";
 
-const IssueItem = ({ todo, changeStatus, editTodo }) => {
+const IssueItem = ({ issue, changeStatus, editIssue }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => {
     setShow(false);
@@ -15,16 +15,16 @@ const IssueItem = ({ todo, changeStatus, editTodo }) => {
 
   const moveItem = (id, status, direction) => {
     if (direction === "advance") {
-      if (todo.status === "inProgress") {
+      if (issue.status === "inProgress") {
         status = "completed";
-      } else if (todo.status === "todo") {
+      } else if (issue.status === "issue") {
         status = "inProgress";
       }
     } else {
-      if (todo.status === "completed") {
+      if (issue.status === "completed") {
         status = "inProgress";
-      } else if (todo.status === "inProgress") {
-        status = "todo";
+      } else if (issue.status === "inProgress") {
+        status = "issue";
       }
     }
     changeStatus(id, status);
@@ -37,15 +37,15 @@ const IssueItem = ({ todo, changeStatus, editTodo }) => {
         <div
           style={{ alignItems: "center" }}
           className={`card-header align-middle text-light ${
-            todo.priority === "Urgent"
+            issue.priority === "Urgent"
               ? "bg-danger"
-              : todo.priority === "High"
+              : issue.priority === "High"
               ? "bg-warning"
-              : todo.priority === "Medium"
+              : issue.priority === "Medium"
               ? "bg-primary"
               : "bg-info"
           }`}>
-          {todo.title}{" "}
+          {issue.title}{" "}
           <svg
             onClick={handleShow}
             style={{ cursor: "pointer" }}
@@ -60,10 +60,10 @@ const IssueItem = ({ todo, changeStatus, editTodo }) => {
         </div>
         <div className='card-body'>
           <h4 className='card-title'></h4>
-          <p className='card-text'>{todo.description}</p>
-          {todo.status === "todo" || todo.status === "inProgress" ? (
+          <p className='card-text'>{issue.description}</p>
+          {issue.status === "issue" || issue.status === "inProgress" ? (
             <svg
-              onClick={() => moveItem(todo.id, todo.status, "advance")}
+              onClick={() => moveItem(issue.id, issue.status, "advance")}
               xmlns='http://www.w3.org/2000/svg'
               width='22'
               height='22'
@@ -75,9 +75,9 @@ const IssueItem = ({ todo, changeStatus, editTodo }) => {
           ) : (
             ""
           )}
-          {todo.status === "inProgress" || todo.status === "completed" ? (
+          {issue.status === "inProgress" || issue.status === "completed" ? (
             <svg
-              onClick={() => moveItem(todo.id, todo.status, "goBack")}
+              onClick={() => moveItem(issue.id, issue.status, "goBack")}
               xmlns='http://www.w3.org/2000/svg'
               width='22'
               height='22'
@@ -92,8 +92,8 @@ const IssueItem = ({ todo, changeStatus, editTodo }) => {
         </div>
       </div>
       <IssueModal
-        todo={todo}
-        editTodo={editTodo}
+        issue={issue}
+        editIssue={editIssue}
         show={show}
         handleClose={handleClose}
       />

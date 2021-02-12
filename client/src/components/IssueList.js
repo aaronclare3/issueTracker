@@ -3,44 +3,44 @@ import React from "react";
 // components
 import IssueItem from "./IssueItem";
 
-const IssueList = ({ todos, changeStatus, editTodo }) => {
-  const renderTodos =
-    todos.length > 0 &&
-    todos.map((todo) => {
+const IssueList = ({ issues, changeStatus, editIssue }) => {
+  const renderIssues =
+    issues.length > 0 &&
+    issues.map((issue) => {
       return (
-        todo.status === "todo" && (
+        issue.status === "issue" && (
           <IssueItem
-            editTodo={editTodo}
-            key={todo.id}
-            todo={todo}
+            editIssue={editIssue}
+            key={issue.id}
+            issue={issue}
             changeStatus={changeStatus}
           />
         )
       );
     });
   const renderCompleted =
-    todos.length > 0 &&
-    todos.map((todo) => {
+    issues.length > 0 &&
+    issues.map((issue) => {
       return (
-        todo.status === "completed" && (
+        issue.status === "completed" && (
           <IssueItem
-            editTodo={editTodo}
-            key={todo.id}
-            todo={todo}
+            editIssue={editIssue}
+            key={issue.id}
+            issue={issue}
             changeStatus={changeStatus}
           />
         )
       );
     });
   const renderInProgress =
-    todos.length > 0 &&
-    todos.map((todo) => {
+    issues.length > 0 &&
+    issues.map((issue) => {
       return (
-        todo.status === "inProgress" && (
+        issue.status === "inProgress" && (
           <IssueItem
-            editTodo={editTodo}
-            key={todo.id}
-            todo={todo}
+            editIssue={editIssue}
+            key={issue.id}
+            issue={issue}
             changeStatus={changeStatus}
           />
         )
@@ -49,8 +49,8 @@ const IssueList = ({ todos, changeStatus, editTodo }) => {
   return (
     <div className='row'>
       <div style={{ textAlign: "center" }} className='col'>
-        <h1>Todos</h1>
-        {renderTodos}
+        <h1>Issues</h1>
+        {renderIssues}
       </div>
       <div style={{ textAlign: "center" }} className='col'>
         <h1>In Progress</h1>

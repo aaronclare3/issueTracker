@@ -1,45 +1,56 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/App.css";
+import { useSelector, useDispatch } from "react-redux";
+import { getProject, clearProject } from "../redux/actions/projectActions";
 
 // components
 import IssueList from "../components/IssueList";
 import IssueForm from "../components/IssueForm";
 
-const Project = () => {
-  const [todos, setTodos] = useState([]);
+const Project = ({ match }) => {
+  const [issues, setIssues] = useState([]);
+  const project = useSelector((state) => state.projectReducer.project);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getProject(match.params.id));
+
+    return () => dispatch(clearProject(match.params.id));
+  }, []);
 
   const changeStatus = (id, status) => {
-    let updatedTodos = [...todos];
-    for (let i in updatedTodos) {
-      if (updatedTodos[i].id === id) {
-        updatedTodos[i].status = status;
+    let updatedIssues = [...issues];
+    for (let i in updatedIssues) {
+      if (updatedIssues[i].id === id) {
+        updatedIssues[i].status = status;
       }
     }
-    setTodos(updatedTodos);
+    setIssues(updatedIssues);
   };
 
-  const editTodo = (id, newTitle, newDescription, newPriority) => {
-    let updatedTodos = [...todos];
-    for (let i in updatedTodos) {
-      if (updatedTodos[i].id === id) {
-        updatedTodos[i].title = newTitle;
-        updatedTodos[i].description = newDescription;
-        updatedTodos[i].priority = newPriority;
+  const editIssue = (id, newTitle, newDescription, newPriority) => {
+    let updatedIssues = [...issues];
+    for (let i in updatedIssues) {
+      if (updatedIssues[i].id === id) {
+        updatedIssues[i].title = newTitle;
+        updatedIssues[i].description = newDescription;
+        updatedIssues[i].priority = newPriority;
       }
     }
-    setTodos(updatedTodos);
+    setIssues(updatedIssues);
   };
 
-  const getTodoFromForm = (todo) => {
-    setTodos([...todos, todo]);
+  const getIssueFromForm = (issue) => {
+    setIssues([...issues, issue]);
   };
 
   return (
     <div>
-      <IssueForm getTodoFromForm={getTodoFromForm} />
+      <h1 style={{ textAlign: "center" }}>{project && project.title}</h1>
+      <IssueForm getIssueFromForm={getIssueFromForm} />
       <IssueList
-        editTodo={editTodo}
-        todos={todos}
+        editIssue={editIssue}
+        issues={issues}
         changeStatus={changeStatus}
       />
     </div>

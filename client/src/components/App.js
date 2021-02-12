@@ -11,7 +11,7 @@ const App = () => {
       <Router>
         <Sidebar />
         <Switch>
-          <Route exact path='/project' component={Project} />
+          <Route exact path='/project/:id' component={Project} />
           <Route path='/projects' component={UsersProjects} />
           <Route exact path='/' component={Dashboard} />
         </Switch>
