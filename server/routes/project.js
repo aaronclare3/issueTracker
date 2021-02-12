@@ -5,7 +5,7 @@ const Project = require("../models/project");
 // get all projects
 router.get("/", async (req, res) => {
   try {
-    const project = await Project.find();
+    const project = await Project.find().populate("issues");
     res.json(project);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
 // get one project
 router.get("/:id", async (req, res) => {
   try {
-    const project = await Project.findById(req.params.id);
+    const project = await Project.findById(req.params.id).populate("issues");
     res.json(project);
   } catch (error) {
     res.status(500).json({ message: error.message });

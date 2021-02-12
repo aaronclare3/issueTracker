@@ -16,7 +16,7 @@ const Project = ({ match }) => {
     dispatch(getProject(match.params.id));
 
     return () => dispatch(clearProject(match.params.id));
-  }, []);
+  }, [match.params.id]);
 
   const changeStatus = (id, status) => {
     let updatedIssues = [...issues];
@@ -47,7 +47,7 @@ const Project = ({ match }) => {
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>{project && project.title}</h1>
-      <IssueForm getIssueFromForm={getIssueFromForm} />
+      <IssueForm project={project} getIssueFromForm={getIssueFromForm} />
       <IssueList
         editIssue={editIssue}
         issues={issues}

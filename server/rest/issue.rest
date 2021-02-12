@@ -1,0 +1,24 @@
+POST http://localhost:4000/issues
+Content-Type: application/json
+
+{
+    "title": "Add phone number to form",
+    "description": "on the contact page there's a form, we need to add a phone number to it",
+    "priority": "High",
+    "status": "Unassigned",
+    "projectId": "6026dc0738ce57af8fd93a1e"
+}
+
+###
+
+PATCH http://localhost:4000/issues/6026d5c2cd6a99ae6ffff765
+Content-Type: application/json
+
+{
+    "priority": "High",
+    "status": "inProgress"
+}
+
+###
+
+DELETE http://localhost:4000/issues/6026d5c2cd6a99ae6ffff765

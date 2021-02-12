@@ -1,19 +1,23 @@
 import React, { useState } from "react";
-import { v4 as uuid } from "uuid";
+import { createIssue } from "../redux/actions/issueActions";
+import { useDispatch } from "react-redux";
 
-const IssueForm = ({ getIssueFromForm }) => {
+const IssueForm = ({ project }) => {
   const [issueTitle, setIssueTitle] = useState("");
   const [issueDescription, setIssueDescription] = useState("");
-  const [issuePriority, setIssuePriority] = useState("");
+  const [issuePriority, setIssuePriority] = useState("Low");
+  const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
-    getIssueFromForm({
-      title: issueTitle,
-      description: issueDescription,
-      priority: issuePriority,
-      id: uuid(),
-      status: "issue",
-    });
+    dispatch(
+      createIssue({
+        title: issueTitle,
+        description: issueDescription,
+        priority: issuePriority,
+        status: "ToDo",
+        project: project._id,
+      })
+    );
     setIssueTitle("");
     setIssueDescription("");
     setIssuePriority("");

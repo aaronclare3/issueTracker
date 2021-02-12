@@ -2,7 +2,7 @@ GET http://localhost:4000/projects
 
 ###
 
-GET http://localhost:4000/projects/6025dcbeae852d969b70d3ac
+GET http://localhost:4000/projects/6026d3cb7074e3ae127a8e7e
 
 ###
 
@@ -10,8 +10,8 @@ POST http://localhost:4000/projects
 Content-Type: application/json
 
 {
-    "title": "IssueTracker",
-    "description": "Simple Web app for managing coding projects"
+    "title": "Clare Accounting Group",
+    "description": "static accounting website built for Scott and Carissa"
 }
 
 ###
@@ -25,4 +25,6 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:4000/projects/6025dcb5ae852d969b70d3ab
+DELETE http://localhost:4000/projects/6026d43a3c5321ae34ca7d73
+
+

@@ -13,6 +13,22 @@ export const projectReducer = (state = initialState, action) => {
       return { ...state, project: action.payload };
     case "CLEAR_PROJECT":
       return { ...state, project: {} };
+    case "CREATE_ISSUE":
+      const newIssue = action.payload;
+      console.log(newIssue);
+      // const newProjects = state.projects.map((proj) => {
+      //   return proj._id === newIssue.project
+      //     ? { ...proj, issues: [...proj.issues, newIssue] }
+      //     : proj;
+      // });
+      return {
+        ...state,
+        // projects: newProjects,
+        project: {
+          ...state.project,
+          issues: [...state.project.issues, newIssue],
+        },
+      };
     default:
       return state;
   }
