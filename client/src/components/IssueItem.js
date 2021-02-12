@@ -1,33 +1,38 @@
 import React, { useEffect, useState } from "react";
+import { updateIssue } from "../redux/actions/issueActions";
+import { useDispatch } from "react-redux";
 
 import IssueModal from "./IssueModal";
 
-const IssueItem = ({ issue, changeStatus, editIssue }) => {
+const IssueItem = ({ issue }) => {
   const [show, setShow] = useState(false);
+  const [status, setStatus] = useState(issue.status);
+  const dispatch = useDispatch();
+
   const handleClose = () => {
     setShow(false);
-    console.log("settingShowCLOSE");
   };
   const handleShow = () => {
     setShow(true);
-    console.log("settingShowOpen");
   };
 
-  const moveItem = (id, status, direction) => {
+  const moveItem = (direction) => {
+    let newStatus;
     if (direction === "advance") {
-      if (issue.status === "inProgress") {
-        status = "completed";
-      } else if (issue.status === "issue") {
-        status = "inProgress";
+      if (status === "InProgress") {
+        newStatus = "Completed";
+      } else if (status === "Unassigned") {
+        newStatus = "InProgress";
       }
     } else {
-      if (issue.status === "completed") {
-        status = "inProgress";
-      } else if (issue.status === "inProgress") {
-        status = "issue";
+      if (status === "Completed") {
+        newStatus = "InProgress";
+      } else if (status === "InProgress") {
+        newStatus = "Unassigned";
       }
     }
-    changeStatus(id, status);
+    setStatus(newStatus);
+    dispatch(updateIssue({ status: newStatus }, issue._id));
   };
   return (
     <div>
@@ -45,7 +50,7 @@ const IssueItem = ({ issue, changeStatus, editIssue }) => {
               ? "bg-primary"
               : "bg-info"
           }`}>
-          {issue.title}{" "}
+          {issue.title}
           <svg
             onClick={handleShow}
             style={{ cursor: "pointer" }}
@@ -61,9 +66,9 @@ const IssueItem = ({ issue, changeStatus, editIssue }) => {
         <div className='card-body'>
           <h4 className='card-title'></h4>
           <p className='card-text'>{issue.description}</p>
-          {issue.status === "issue" || issue.status === "inProgress" ? (
+          {status === "Unassigned" || status === "InProgress" ? (
             <svg
-              onClick={() => moveItem(issue.id, issue.status, "advance")}
+              onClick={() => moveItem("advance")}
               xmlns='http://www.w3.org/2000/svg'
               width='22'
               height='22'
@@ -75,9 +80,9 @@ const IssueItem = ({ issue, changeStatus, editIssue }) => {
           ) : (
             ""
           )}
-          {issue.status === "inProgress" || issue.status === "completed" ? (
+          {status === "InProgress" || status === "Completed" ? (
             <svg
-              onClick={() => moveItem(issue.id, issue.status, "goBack")}
+              onClick={() => moveItem("goBack")}
               xmlns='http://www.w3.org/2000/svg'
               width='22'
               height='22'
@@ -91,12 +96,7 @@ const IssueItem = ({ issue, changeStatus, editIssue }) => {
           )}
         </div>
       </div>
-      <IssueModal
-        issue={issue}
-        editIssue={editIssue}
-        show={show}
-        handleClose={handleClose}
-      />
+      <IssueModal issue={issue} show={show} handleClose={handleClose} />
     </div>
   );
 };

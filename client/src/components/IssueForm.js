@@ -14,7 +14,7 @@ const IssueForm = ({ project }) => {
         title: issueTitle,
         description: issueDescription,
         priority: issuePriority,
-        status: "ToDo",
+        status: "Unassigned",
         project: project._id,
       })
     );

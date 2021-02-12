@@ -20,3 +20,18 @@ export const createIssue = (issue) => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const updateIssue = (issue, id) => async (dispatch) => {
+  try {
+    console.log(issue);
+    const issueUpdated = await axios
+      .patch(`http://localhost:4000/issues/${id}`, issue)
+      .then((res) => res.data);
+    dispatch({
+      type: UPDATE_ISSUE,
+      payload: issueUpdated,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};

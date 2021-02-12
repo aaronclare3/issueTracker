@@ -15,19 +15,21 @@ export const projectReducer = (state = initialState, action) => {
       return { ...state, project: {} };
     case "CREATE_ISSUE":
       const newIssue = action.payload;
-      console.log(newIssue);
-      // const newProjects = state.projects.map((proj) => {
-      //   return proj._id === newIssue.project
-      //     ? { ...proj, issues: [...proj.issues, newIssue] }
-      //     : proj;
-      // });
       return {
         ...state,
-        // projects: newProjects,
         project: {
           ...state.project,
           issues: [...state.project.issues, newIssue],
         },
+      };
+    case "UPDATE_ISSUE":
+      const updatedIssue = action.payload;
+      const updatedIssueList = state.project.issues.map((issue) => {
+        return issue._id === updatedIssue._id ? updatedIssue : issue;
+      });
+      return {
+        ...state,
+        project: { ...state.project, issues: updatedIssueList },
       };
     default:
       return state;

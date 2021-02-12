@@ -3,18 +3,13 @@ import React from "react";
 // components
 import IssueItem from "./IssueItem";
 
-const IssueList = ({ issues, changeStatus, editIssue }) => {
+const IssueList = ({ issues }) => {
   const renderIssues =
     issues.length > 0 &&
     issues.map((issue) => {
       return (
-        issue.status === "issue" && (
-          <IssueItem
-            editIssue={editIssue}
-            key={issue.id}
-            issue={issue}
-            changeStatus={changeStatus}
-          />
+        issue.status === "Unassigned" && (
+          <IssueItem key={issue._id} issue={issue} />
         )
       );
     });
@@ -22,13 +17,8 @@ const IssueList = ({ issues, changeStatus, editIssue }) => {
     issues.length > 0 &&
     issues.map((issue) => {
       return (
-        issue.status === "completed" && (
-          <IssueItem
-            editIssue={editIssue}
-            key={issue.id}
-            issue={issue}
-            changeStatus={changeStatus}
-          />
+        issue.status === "Completed" && (
+          <IssueItem key={issue._id} issue={issue} />
         )
       );
     });
@@ -36,20 +26,15 @@ const IssueList = ({ issues, changeStatus, editIssue }) => {
     issues.length > 0 &&
     issues.map((issue) => {
       return (
-        issue.status === "inProgress" && (
-          <IssueItem
-            editIssue={editIssue}
-            key={issue.id}
-            issue={issue}
-            changeStatus={changeStatus}
-          />
+        issue.status === "InProgress" && (
+          <IssueItem key={issue._id} issue={issue} />
         )
       );
     });
   return (
     <div className='row'>
       <div style={{ textAlign: "center" }} className='col'>
-        <h1>Issues</h1>
+        <h1>Unassigned</h1>
         {renderIssues}
       </div>
       <div style={{ textAlign: "center" }} className='col'>

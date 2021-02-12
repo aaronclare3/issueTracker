@@ -8,7 +8,6 @@ import IssueList from "../components/IssueList";
 import IssueForm from "../components/IssueForm";
 
 const Project = ({ match }) => {
-  const [issues, setIssues] = useState([]);
   const project = useSelector((state) => state.projectReducer.project);
   const dispatch = useDispatch();
 
@@ -18,41 +17,11 @@ const Project = ({ match }) => {
     return () => dispatch(clearProject(match.params.id));
   }, [match.params.id]);
 
-  const changeStatus = (id, status) => {
-    let updatedIssues = [...issues];
-    for (let i in updatedIssues) {
-      if (updatedIssues[i].id === id) {
-        updatedIssues[i].status = status;
-      }
-    }
-    setIssues(updatedIssues);
-  };
-
-  const editIssue = (id, newTitle, newDescription, newPriority) => {
-    let updatedIssues = [...issues];
-    for (let i in updatedIssues) {
-      if (updatedIssues[i].id === id) {
-        updatedIssues[i].title = newTitle;
-        updatedIssues[i].description = newDescription;
-        updatedIssues[i].priority = newPriority;
-      }
-    }
-    setIssues(updatedIssues);
-  };
-
-  const getIssueFromForm = (issue) => {
-    setIssues([...issues, issue]);
-  };
-
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>{project && project.title}</h1>
-      <IssueForm project={project} getIssueFromForm={getIssueFromForm} />
-      <IssueList
-        editIssue={editIssue}
-        issues={issues}
-        changeStatus={changeStatus}
-      />
+      <IssueForm project={project} />
+      {project.issues && <IssueList issues={project.issues} />}
     </div>
   );
 };

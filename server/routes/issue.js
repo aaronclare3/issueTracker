@@ -40,9 +40,6 @@ router.patch("/:id", async (req, res) => {
     if (req.body.status != null) {
       issue.status = req.body.status;
     }
-    if (req.body.projectId != null) {
-      issue.project = req.body.projectId;
-    }
     const saveIssue = await issue.save();
     res.json(saveIssue);
   } catch (error) {
