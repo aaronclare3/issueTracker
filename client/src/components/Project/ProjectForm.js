@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { createProject } from "../redux/actions/projectActions";
+import { createProject } from "../../redux/actions/projectActions";
 
 const ProjectForm = () => {
   const [projectTitle, setProjectTitle] = useState("");

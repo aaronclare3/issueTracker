@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
-import { updateIssue } from "../redux/actions/issueActions";
+import { updateIssue } from "../../redux/actions/issueActions";
 import { useDispatch } from "react-redux";
 
 const IssueModal = ({ issue, show, handleClose }) => {

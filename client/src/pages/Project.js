@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import "../styles/App.css";
 import { useSelector, useDispatch } from "react-redux";
 import { getProject, clearProject } from "../redux/actions/projectActions";
 
 // components
-import IssueList from "../components/IssueList";
-import IssueForm from "../components/IssueForm";
+import IssueList from "../components/Issue/IssueList";
+import IssueForm from "../components/Issue/IssueForm";
 
 const Project = ({ match }) => {
   const project = useSelector((state) => state.projectReducer.project);

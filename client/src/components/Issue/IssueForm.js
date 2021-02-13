@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { createIssue } from "../redux/actions/issueActions";
+import { createIssue } from "../../redux/actions/issueActions";
 import { useDispatch } from "react-redux";
 
 const IssueForm = ({ project }) => {
