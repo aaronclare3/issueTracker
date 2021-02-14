@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createProject } from "../../redux/actions/projectActions";
+import "./ProjectForm.css";
 
 const ProjectForm = () => {
   const [projectTitle, setProjectTitle] = useState("");
@@ -23,20 +24,28 @@ const ProjectForm = () => {
   };
   return (
     <div>
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <input
-          type='text'
-          placeholder='Title...'
-          value={projectTitle}
-          onChange={(e) => handleTitleChange(e.target.value)}
-        />
-        <input
-          type='text'
-          placeholder='Description...'
-          value={projectDescription}
-          onChange={(e) => handleDescriptionChange(e.target.value)}
-        />
-        <button type='submit'>Add Project</button>
+      <form className='projectForm form' onSubmit={(e) => handleSubmit(e)}>
+        <div className='form-group'>
+          <input
+            className='form-control'
+            type='text'
+            placeholder='Title...'
+            value={projectTitle}
+            onChange={(e) => handleTitleChange(e.target.value)}
+          />
+        </div>
+        <div className='form-group'>
+          <input
+            className='form-control'
+            type='text'
+            placeholder='Description...'
+            value={projectDescription}
+            onChange={(e) => handleDescriptionChange(e.target.value)}
+          />
+        </div>
+        <button class='projectForm-btn btn' type='submit'>
+          ADD PROJECT
+        </button>
       </form>
     </div>
   );

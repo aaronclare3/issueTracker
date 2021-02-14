@@ -1,0 +1,51 @@
+.projectForm {
+    background: #334860;
+    width: 50vw;
+    margin: 0 auto;
+    border-radius: 10px;
+    padding: 10px;
+    border: 2px solid white;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.projectForm > div {
+    margin: 0px 0px 10px 0px;
+}
+
+.projectForm > div > input {
+    background: #2C3D51;
+    color: #BA6BF3;
+    font-weight: bold;
+    border: 2px solid white;
+}
+
+.projectForm > div > input::placeholder {
+    color: white;
+    font-weight: bold;
+}
+.projectForm > div > input:focus::placeholder {
+    color: #BA6BF3;
+    font-weight: bold;
+}
+
+.projectForm > div > input:focus {
+    border: 2px solid #BA6BF3;
+    background: #2C3D51;
+    caret-color: #BA6BF3;
+    color: #BA6BF3;
+    font-weight: bold;
+}
+
+.projectForm-btn {
+    background: #2C3D51;
+    width: 100%;
+    color: white;
+    font-weight: bold;
+    border: 2px solid;
+}
+
+.projectForm-btn:hover {
+    border: 2px solid #BA6BF3;
+    color: #BA6BF3;
+}
+
