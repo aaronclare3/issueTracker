@@ -1,7 +1,7 @@
 .projectForm {
     background: #334860;
     width: 50vw;
-    margin: 0 auto;
+    margin: 30px auto;
     border-radius: 10px;
     padding: 10px;
     border: 2px solid white;
@@ -48,4 +48,6 @@
     border: 2px solid #BA6BF3;
     color: #BA6BF3;
 }
+
+
 

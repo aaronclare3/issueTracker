@@ -1,5 +1,8 @@
 .sidebar {
     font-size: 2em;
+    position: fixed;
+    top: 10px;
+    left: 10px;
 }
 
 .nav-menu {

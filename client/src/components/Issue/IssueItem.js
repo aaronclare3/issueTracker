@@ -66,6 +66,7 @@ const IssueItem = ({ issue }) => {
         <div className='card-body'>
           <p className='card-text'>Description: {issue.description}</p>
           <p className='card-text'>Priority: {issue.priority}</p>
+          <p className='card-text'>Assigned To: HardCoded</p>
           {status === "Unassigned" || status === "InProgress" ? (
             <svg
               style={{ cursor: "pointer" }}

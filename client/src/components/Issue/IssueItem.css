@@ -11,4 +11,9 @@
 
 .issueItem > .card-header {
     font-weight: bold;
+    border-bottom: 0.5px white;
+}
+
+.card-header > .bi-x-square-fill:hover {
+    color: rgba(255, 0, 0, 0.653);
 }
