@@ -1,0 +1,14 @@
+.issueItem {
+    background: #334860;
+    max-width: 18rem;
+    margin: 0 auto;
+    border: 2px solid white;
+}
+
+.issueItem:hover {
+    border: 2px solid #BA6BF3;
+}
+
+.issueItem > .card-header {
+    font-weight: bold;
+}

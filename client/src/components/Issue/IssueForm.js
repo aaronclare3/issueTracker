@@ -25,7 +25,7 @@ const IssueForm = ({ project }) => {
     setIssuePriority("Low");
   };
   return (
-    <div>
+    <div className='issueFormContainer'>
       <h2>Create an issue</h2>
       <form className='issueForm form' onSubmit={(e) => handleSubmit(e)}>
         <div>

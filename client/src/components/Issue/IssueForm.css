@@ -1,3 +1,7 @@
+.issueFormContainer >  h2 {
+    text-align: center;
+}
+
 .issueForm {
     background: #334860;
     width: 50vw;
