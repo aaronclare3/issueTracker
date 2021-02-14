@@ -6,12 +6,12 @@
 }
 
 .issueItem:hover {
-    border: 2px solid #BA6BF3;
+    background: #2C3D51;
 }
 
 .issueItem > .card-header {
     font-weight: bold;
-    border-bottom: 0.5px white;
+    border-bottom: 1px solid white;
 }
 
 .card-header > .bi-x-square-fill:hover {
