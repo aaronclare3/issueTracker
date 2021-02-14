@@ -6,7 +6,7 @@
     position: fixed;
     left: -100%;
     top: 0;
-    background: rgb(76,67,117);
+    background: #334860;
     height: 100vh;
     width: 250px;
     transition: 850ms ease-in;
@@ -14,10 +14,6 @@
     font-size: 30px;
     z-index: 1;
     box-shadow: 0px 0px 20px black;
-}
-
-.open-nav {
-    color: rgb(76,67,117);
 }
 
 
@@ -32,8 +28,13 @@
     padding: 0; 
 }
 
-.close-nav:hover {
-    background: rgb(89,79,141);
+.close-nav:hover, .open-nav:hover {
+    color: #BA6BF3;
+    cursor: pointer;
+}
+
+.open-nav{
+    color: white;
 }
 
 .fa {
@@ -58,7 +59,7 @@
     text-align: center;
 }
 
-.side-list-item > a{
+.side-list-item > a {
     text-decoration: none;
     color: white;
     width: 100%;
@@ -68,5 +69,5 @@
 }
 
 .side-list-item > a:hover {
-    background: rgb(89,79,141);
+    color:#BA6BF3;
 }

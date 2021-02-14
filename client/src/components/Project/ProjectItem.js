@@ -1,19 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./ProjectItem.css";
 
 const ProjectItem = ({ project }) => {
   return (
-    <Link to={`/project/${project._id}`}>
-      <div
-        style={{
-          margin: "10px",
-          border: "1px solid black",
-          textAlign: "center",
-        }}>
-        <div>Project: {project.title}</div>
-        <div>Description: {project.description}</div>
-      </div>
-    </Link>
+    <div className='projectItem'>
+      <Link to={`/project/${project._id}`}>
+        <div className='projectItemText'>
+          <h2>{project.title}</h2>
+          <h5>{project.description}</h5>
+        </div>
+      </Link>
+    </div>
   );
 };
 

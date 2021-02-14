@@ -1,0 +1,21 @@
+.projectItem{
+    max-width: 90vw;
+    margin: 0 auto;
+}
+
+.projectItem > a {
+    text-decoration: none;
+}
+
+.projectItemText {
+    margin: 10px;
+    border: 1px solid white;
+    text-align: center;
+    color: white;
+    border-radius: 5px;
+}
+
+.projectItemText:hover {
+    border: 1px solid #BA6BF3;
+    color: #BA6BF3;
+}
