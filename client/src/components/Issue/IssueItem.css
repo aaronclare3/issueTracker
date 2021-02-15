@@ -1,0 +1,21 @@
+.issueItem {
+    background: #2C3D51;
+
+    max-width: 18rem;
+    margin: 0 auto;
+    border: 2px solid white;
+}
+
+.issueItem:hover {
+    background: #334860;
+
+}
+
+.issueItem > .card-header {
+    font-weight: bold;
+    border-bottom: 1px solid white;
+}
+
+.card-header > .bi-x-square-fill:hover {
+    color: rgba(255, 0, 0, 0.653);
+}

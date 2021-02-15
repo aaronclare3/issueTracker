@@ -1,0 +1,10 @@
+body {
+    background: #2C3D51;
+    color: white;
+}
+.App {
+    height: 100%;
+    width: 100%;
+    min-height: 1000px;
+    font-family: "Courier New", "Lucida Console", monospace;
+}

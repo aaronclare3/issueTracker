@@ -1,0 +1,68 @@
+.issueFormContainer >  h2 {
+    text-align: center;
+}
+
+.issueForm {
+    background: #334860;
+    width: 50vw;
+    margin: 10px auto 100px auto;
+    border-radius: 10px;
+    padding: 10px;
+    border: 2px solid white;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.issueForm > div {
+    margin: 0px 0px 10px 0px;
+}
+
+.issueForm > div > input {
+    background: #2C3D51;
+    color: #BA6BF3;
+    font-weight: bold;
+    border: 2px solid white;
+}
+
+.issueForm > div > input::placeholder {
+    color: white;
+    font-weight: bold;
+}
+.issueForm > div > input:focus::placeholder {
+    color: #BA6BF3;
+    font-weight: bold;
+}
+
+.issueForm > div > input:focus {
+    border: 2px solid #BA6BF3;
+    background: #2C3D51;
+    caret-color: #BA6BF3;
+    color: #BA6BF3;
+    font-weight: bold;
+}
+
+.issueForm-btn {
+    background: #2C3D51;
+    width: 100%;
+    color: white;
+    font-weight: bold;
+    border: 2px solid;
+}
+
+.issueForm-btn:hover {
+    border: 2px solid #BA6BF3;
+    color: #BA6BF3;
+}
+
+.issueSelect > select {
+    background: #2C3D51;
+    width: 10%;
+    color: white;
+    font-weight: bold;
+    border: 2px solid;
+    outline: none;
+    border-radius: 4px;
+}
+
+.issueSelect > select:focus {
+    color:#BA6BF3;
+}

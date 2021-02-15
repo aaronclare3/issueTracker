@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { updateIssue, deleteIssue } from "../../redux/actions/issueActions";
 import { useDispatch } from "react-redux";
+import "./IssueItem.css";
 
 import IssueModal from "./IssueModal";
 
@@ -36,12 +37,8 @@ const IssueItem = ({ issue }) => {
   };
   return (
     <div>
-      <div
-        className='card text-dark mb-3'
-        style={{ maxWidth: "18rem", margin: "0 auto", background: "#EBECF0" }}>
-        <div
-          style={{ alignItems: "center", fontWeight: "bold" }}
-          className={`card-header align-middle text-dark`}>
+      <div className='issueItem card mb-3'>
+        <div className='card-header'>
           <svg
             onClick={() => dispatch(deleteIssue(issue._id))}
             style={{ cursor: "pointer" }}
@@ -69,6 +66,7 @@ const IssueItem = ({ issue }) => {
         <div className='card-body'>
           <p className='card-text'>Description: {issue.description}</p>
           <p className='card-text'>Priority: {issue.priority}</p>
+          <p className='card-text'>Assigned To: HardCoded</p>
           {status === "Unassigned" || status === "InProgress" ? (
             <svg
               style={{ cursor: "pointer" }}

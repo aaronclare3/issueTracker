@@ -4,10 +4,11 @@ import Project from "../pages/Project";
 import Dashboard from "../pages/Dashboard";
 import Sidebar from "./Sidebar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import "./App.css";
 
 const App = () => {
   return (
-    <div>
+    <div className='App'>
       <Router>
         <Sidebar />
         <Switch>

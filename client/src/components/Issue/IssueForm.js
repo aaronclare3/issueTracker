@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { createIssue } from "../../redux/actions/issueActions";
 import { useDispatch } from "react-redux";
+import "./IssueForm.css";
 
 const IssueForm = ({ project }) => {
   const [issueTitle, setIssueTitle] = useState("");
@@ -24,33 +25,39 @@ const IssueForm = ({ project }) => {
     setIssuePriority("Low");
   };
   return (
-    <div className='container'>
-      <h2>Create an issue</h2>
-      <form className='form' onSubmit={(e) => handleSubmit(e)}>
-        <input
-          className='form-control'
-          type='text'
-          value={issueTitle}
-          onChange={(e) => setIssueTitle(e.target.value)}
-          placeholder='Issue/Bug...'
-        />
-        <input
-          className='form-control'
-          type='text'
-          value={issueDescription}
-          onChange={(e) => setIssueDescription(e.target.value)}
-          placeholder='Description...'
-        />
-        <select
-          className='form-select'
-          value={issuePriority}
-          onChange={(e) => setIssuePriority(e.target.value)}>
-          <option value='Low'>Low</option>
-          <option value='Medium'>Medium</option>
-          <option value='High'>High</option>
-          <option value='Urgent'>Urgent</option>
-        </select>
-        <button className='btn btn-info btn-sm' type='submit'>
+    <div className='issueFormContainer'>
+      <h2>Create an issue...</h2>
+      <form className='issueForm form' onSubmit={(e) => handleSubmit(e)}>
+        <div>
+          <input
+            className='form-control'
+            type='text'
+            value={issueTitle}
+            onChange={(e) => setIssueTitle(e.target.value)}
+            placeholder='Issue/Bug...'
+          />
+        </div>
+        <div>
+          <input
+            className='form-control'
+            type='text'
+            value={issueDescription}
+            onChange={(e) => setIssueDescription(e.target.value)}
+            placeholder='Description...'
+          />
+        </div>
+        <div className='issueSelect'>
+          <select
+            className='form-select'
+            value={issuePriority}
+            onChange={(e) => setIssuePriority(e.target.value)}>
+            <option value='Low'>Low</option>
+            <option value='Medium'>Medium</option>
+            <option value='High'>High</option>
+            <option value='Urgent'>Urgent</option>
+          </select>
+        </div>
+        <button className='btn issueForm-btn' type='submit'>
           Submit Issue
         </button>
       </form>

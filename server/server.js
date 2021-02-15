@@ -17,7 +17,9 @@ app.use(express.json());
 app.use(cors());
 const projectRoutes = require("./routes/project");
 const issueRoutes = require("./routes/issue");
+const userRoutes = require("./routes/user");
 app.use("/projects", projectRoutes);
 app.use("/issues", issueRoutes);
+app.use("/users", userRoutes);
 
 app.listen(4000, () => console.log("Server is up and running on port 4000!"));
