@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
 
 mongoose.connect(process.env.MONGO_CONNECTION_STRING, {
   useUnifiedTopology: true,
@@ -15,6 +16,8 @@ db.once("open", () => console.log("MongoDB Connection Successful!"));
 
 app.use(express.json());
 app.use(cors());
+app.use(cookieParser());
+
 const projectRoutes = require("./routes/project");
 const issueRoutes = require("./routes/issue");
 const userRoutes = require("./routes/user");

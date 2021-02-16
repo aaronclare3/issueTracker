@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Project = require("../models/project");
+const auth = require("../middleware/auth");
 
 // get all projects
 router.get("/", async (req, res) => {
@@ -23,8 +24,8 @@ router.get("/:id", async (req, res) => {
 });
 
 // create a project
-
-router.post("/", async (req, res) => {
+// if user is authorized, by logging in. Check this in the auth middleware
+router.post("/", auth, async (req, res) => {
   const project = new Project({
     title: req.body.title,
     description: req.body.description,
