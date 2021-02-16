@@ -10,6 +10,7 @@ import axios from "axios";
 
 export const createProject = (project) => async (dispatch) => {
   try {
+    console.log("createAction");
     const projectAdd = await axios
       .post("http://localhost:4000/projects", project)
       .then((res) => res.data);

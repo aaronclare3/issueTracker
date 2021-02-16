@@ -4,17 +4,18 @@ const Project = require("../models/project");
 const auth = require("../middleware/auth");
 
 // get all projects
-router.get("/", async (req, res) => {
+router.get("/", auth, async (req, res) => {
   try {
-    const project = await Project.find().populate("issues");
-    res.json(project);
+    const projects = await Project.find().populate("issues");
+    const usersProjects = projects.filter((proj) => proj.creator == req.user);
+    res.json(usersProjects);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 });
 
 // get one project
-router.get("/:id", async (req, res) => {
+router.get("/:id", auth, async (req, res) => {
   try {
     const project = await Project.findById(req.params.id).populate("issues");
     res.json(project);
@@ -26,9 +27,11 @@ router.get("/:id", async (req, res) => {
 // create a project
 // if user is authorized, by logging in. Check this in the auth middleware
 router.post("/", auth, async (req, res) => {
+  console.log("here!");
   const project = new Project({
     title: req.body.title,
     description: req.body.description,
+    creator: req.user,
   });
   try {
     const saveProject = await project.save();
@@ -39,7 +42,7 @@ router.post("/", auth, async (req, res) => {
 });
 
 // update a project
-router.patch("/:id", async (req, res) => {
+router.patch("/:id", auth, async (req, res) => {
   try {
     const project = await Project.findById(req.params.id);
     if (req.body.title != null) {
@@ -56,7 +59,7 @@ router.patch("/:id", async (req, res) => {
 });
 
 // delete a project
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", auth, async (req, res) => {
   try {
     const project = await Project.findByIdAndDelete(req.params.id);
     res.json(project);

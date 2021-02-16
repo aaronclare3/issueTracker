@@ -2,7 +2,7 @@ GET http://localhost:4000/projects
 
 ###
 
-GET http://localhost:4000/projects/6026d3cb7074e3ae127a8e7e
+GET http://localhost:4000/projects/602c253b18e50e0024580819
 
 ###
 
@@ -10,7 +10,7 @@ POST http://localhost:4000/projects
 Content-Type: application/json
 
 {
-    "title": "Clare Accounting Group12345678",
+    "title": "jimmy john's rad project123",
     "description": "static accounting website built for Scott and Carissa"
 }
 

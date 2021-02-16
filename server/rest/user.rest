@@ -2,7 +2,7 @@ POST http://localhost:4000/users/
 Content-Type: application/json
 
 {
-    "username": "aaron_clare4",
+    "username": "jimmy_clare4",
     "password": "helloworld",
     "verifyPassword": "helloworld"
 }
@@ -15,8 +15,8 @@ POST http://localhost:4000/users/login
 Content-Type: application/json
 
 {
-    "username": "aaron_clare4",
-    "password": "helloworld"
+    "username": "jimmy johns",
+    "password": "jimmy123"
 }
 
 ###

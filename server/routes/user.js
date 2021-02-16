@@ -108,4 +108,18 @@ router.get("/", async (req, res) => {
   }
 });
 
+// check if user is logged in
+router.get("/loggedIn", async (req, res) => {
+  try {
+    const token = req.cookies.token;
+    if (!token) return res.json(false);
+    // this will throw error if token wasn't created using JWT secret
+    jwt.verify(token, process.env.JWT_SECRET);
+
+    res.send(true);
+  } catch (error) {
+    res.json(false);
+  }
+});
+
 module.exports = router;
