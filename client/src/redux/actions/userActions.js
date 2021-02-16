@@ -12,6 +12,10 @@ export const registerUser = (user) => async (dispatch) => {
       .post("http://localhost:4000/users", user)
       .then((res) => res.data);
     dispatch({
+      type: CHECK_LOGGED_IN,
+      payload: true,
+    });
+    dispatch({
       type: REGISTER_USER,
       payload: userRegister,
     });
@@ -27,6 +31,10 @@ export const loginUser = (user) => async (dispatch) => {
       .post("http://localhost:4000/users/login", user)
       .then((res) => res.data);
     dispatch({
+      type: CHECK_LOGGED_IN,
+      payload: true,
+    });
+    dispatch({
       type: LOGIN_USER,
       payload: userLogin,
     });
@@ -40,6 +48,7 @@ export const checkLoggedIn = (user) => async (dispatch) => {
     const checkUser = await axios
       .get("http://localhost:4000/users/loggedIn", user)
       .then((res) => res.data);
+    console.log(checkUser);
     dispatch({
       type: CHECK_LOGGED_IN,
       payload: checkUser,

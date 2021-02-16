@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { registerUser } from "../../redux/actions/userActions.js";
 
-const RegisterForm = () => {
+const RegisterForm = ({ history }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [verifyPassword, setVerifyPassword] = useState("");
@@ -10,6 +10,7 @@ const RegisterForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(registerUser({ username, password, verifyPassword }));
+    history.push("/");
   };
   return (
     <div>
