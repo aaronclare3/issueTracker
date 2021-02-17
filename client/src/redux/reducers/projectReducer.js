@@ -2,6 +2,7 @@ const initialState = {
   projects: [],
   project: {},
   loggedIn: undefined,
+  user: undefined,
 };
 
 export const projectReducer = (state = initialState, action) => {
@@ -44,9 +45,16 @@ export const projectReducer = (state = initialState, action) => {
         project: { ...state.project, issues: listWithoutIssue },
       };
     case "CHECK_LOGGED_IN":
-      return { ...state, loggedIn: action.payload };
+      return {
+        ...state,
+        loggedIn: action.payload.loggedIn,
+        user: action.payload.user,
+      };
     case "LOGOUT_USER":
       return { ...state, loggedIn: action.payload };
+    case "LOGIN_USER":
+      console.log(action.payload);
+      return state;
     default:
       return state;
   }

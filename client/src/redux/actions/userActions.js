@@ -13,7 +13,7 @@ export const registerUser = (user) => async (dispatch) => {
       .then((res) => res.data);
     dispatch({
       type: CHECK_LOGGED_IN,
-      payload: true,
+      payload: { loggedIn: true, user: user.username },
     });
     dispatch({
       type: REGISTER_USER,
@@ -31,7 +31,7 @@ export const loginUser = (user) => async (dispatch) => {
       .then((res) => res.data);
     dispatch({
       type: CHECK_LOGGED_IN,
-      payload: true,
+      payload: { loggedIn: true, user: user.username },
     });
     dispatch({
       type: LOGIN_USER,
@@ -63,7 +63,7 @@ export const logoutUser = () => async (dispatch) => {
       .then((res) => res.data);
     dispatch({
       type: CHECK_LOGGED_IN,
-      payload: false,
+      payload: { loggedIn: false, user: undefined },
     });
     dispatch({
       type: LOGOUT_USER,
