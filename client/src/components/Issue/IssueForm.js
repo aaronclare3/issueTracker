@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { createIssue } from "../../redux/actions/issueActions";
 import { useDispatch } from "react-redux";
 import "./IssueForm.css";
+import { getProject } from "../../redux/actions/projectActions";
 
 const IssueForm = ({ project }) => {
   const [issueTitle, setIssueTitle] = useState("");

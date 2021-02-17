@@ -13,6 +13,7 @@ router.post("/", auth, async (req, res) => {
     priority: req.body.priority,
     status: req.body.status,
     project: req.body.project,
+    createdBy: req.user,
   });
   try {
     const saveIssue = await issue.save();
