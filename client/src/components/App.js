@@ -15,6 +15,7 @@ axios.defaults.withCredentials = true;
 
 const App = () => {
   const loggedIn = useSelector((state) => state.projectReducer.loggedIn);
+  const username = useSelector((state) => state.projectReducer.username);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -25,26 +26,31 @@ const App = () => {
       <Router>
         {loggedIn && <Sidebar />}
         <Switch>
-          {loggedIn ? (
-            <>
-              <Route exact path='/project/:id' component={Project} />
-              <Route
-                path='/projects'
-                render={(props) => (
-                  <UsersProjects {...props} loggedIn={loggedIn} />
-                )}
+          <Route
+            exact
+            path='/project/:id'
+            username={username}
+            component={Project}
+          />
+          <Route
+            path='/projects'
+            render={(props) => (
+              <UsersProjects
+                {...props}
+                loggedIn={loggedIn}
+                username={username}
               />
-              <Route
-                path='/dashboard'
-                render={(props) => <Dashboard {...props} loggedIn={loggedIn} />}
-              />
-            </>
-          ) : (
-            <>
-              <Route path='/register' render={Register} />
-              <Route exact path='/' render={(props) => <Login {...props} />} />)
-            </>
-          )}
+            )}
+          />
+          <Route
+            path='/dashboard'
+            render={(props) => (
+              <Dashboard {...props} username={username} loggedIn={loggedIn} />
+            )}
+          />
+
+          <Route path='/register' render={(props) => <Register {...props} />} />
+          <Route exact path='/' render={(props) => <Login {...props} />} />
         </Switch>
       </Router>
     </div>

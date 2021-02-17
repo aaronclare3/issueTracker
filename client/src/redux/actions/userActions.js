@@ -8,12 +8,12 @@ import axios from "axios";
 
 export const registerUser = (user) => async (dispatch) => {
   try {
-    const userReg = await axios
+    await axios
       .post("http://localhost:4000/users", user)
       .then((res) => res.data);
     dispatch({
       type: REGISTER_USER,
-      payload: true,
+      payload: user.username,
     });
   } catch (error) {
     console.log(error);
@@ -22,13 +22,12 @@ export const registerUser = (user) => async (dispatch) => {
 
 export const loginUser = (user) => async (dispatch) => {
   try {
-    const userLoggedIn = await axios
+    await axios
       .post("http://localhost:4000/users/login", user)
       .then((res) => res.data);
-    console.log(userLoggedIn);
     dispatch({
       type: LOGIN_USER,
-      payload: true,
+      payload: user.username,
     });
   } catch (error) {
     console.log(error);
@@ -40,10 +39,13 @@ export const checkLoggedIn = () => async (dispatch) => {
     const checkUser = await axios
       .get("http://localhost:4000/users/loggedIn")
       .then((res) => res.data);
-    console.log(checkUser);
+    console.log(checkUser.isLoggedIn, checkUser.username);
     dispatch({
       type: CHECK_LOGGED_IN,
-      payload: checkUser,
+      payload: {
+        isLoggedIn: checkUser.isLoggedIn,
+        username: checkUser.username,
+      },
     });
   } catch (error) {
     console.log(error);
@@ -57,7 +59,6 @@ export const logoutUser = () => async (dispatch) => {
       .then((res) => res.data);
     dispatch({
       type: LOGOUT_USER,
-      payload: false,
     });
   } catch (error) {
     console.log(error);
