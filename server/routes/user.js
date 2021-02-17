@@ -98,4 +98,28 @@ router.get("/logout", (req, res) => {
     .send();
 });
 
+// log all users
+router.get("/", async (req, res) => {
+  try {
+    const allUsers = await User.find();
+    res.status(200).json(allUsers);
+  } catch (error) {
+    res.status(500).json({ message: "Could not find all users" });
+  }
+});
+
+// check if user is logged in
+router.get("/loggedIn", async (req, res) => {
+  try {
+    const token = req.cookies.token;
+    if (!token) return res.json(false);
+    // this will throw error if token wasn't created using JWT secret
+    jwt.verify(token, process.env.JWT_SECRET);
+
+    res.send(true);
+  } catch (error) {
+    res.json(false);
+  }
+});
+
 module.exports = router;

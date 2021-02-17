@@ -8,7 +8,6 @@ import axios from "axios";
 
 export const createIssue = (issue) => async (dispatch) => {
   try {
-    console.log(issue);
     const issueAdd = await axios
       .post("http://localhost:4000/issues", issue)
       .then((res) => res.data);
@@ -16,9 +15,7 @@ export const createIssue = (issue) => async (dispatch) => {
       type: CREATE_ISSUE,
       payload: issueAdd,
     });
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (error) {}
 };
 
 export const updateIssue = (issue, id) => async (dispatch) => {
@@ -30,9 +27,7 @@ export const updateIssue = (issue, id) => async (dispatch) => {
       type: UPDATE_ISSUE,
       payload: issueUpdated,
     });
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (error) {}
 };
 
 export const deleteIssue = (id) => async (dispatch) => {
@@ -44,7 +39,5 @@ export const deleteIssue = (id) => async (dispatch) => {
       type: DELETE_ISSUE,
       payload: issueDeleted,
     });
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (error) {}
 };

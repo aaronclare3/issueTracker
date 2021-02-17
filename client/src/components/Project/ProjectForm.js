@@ -43,7 +43,7 @@ const ProjectForm = () => {
             onChange={(e) => handleDescriptionChange(e.target.value)}
           />
         </div>
-        <button class='projectForm-btn btn' type='submit'>
+        <button className='projectForm-btn btn' type='submit'>
           ADD PROJECT
         </button>
       </form>
