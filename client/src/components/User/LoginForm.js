@@ -37,7 +37,14 @@ const LoginForm = () => {
         <button className='projectForm-btn btn' type='submit'>
           SIGN IN
         </button>
-        <Link to='/register'>Sign Up</Link>
+        <Link
+          style={{
+            textDecoration: "underline",
+            color: "white",
+          }}
+          to='/register'>
+          CREATE AN ACCOUNT
+        </Link>
       </form>
     </div>
   );

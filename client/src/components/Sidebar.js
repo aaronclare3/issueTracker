@@ -35,14 +35,6 @@ const Sidebar = ({ username }) => {
 
       <div className={showSidebar ? "nav-menu nav-menu-active" : "nav-menu"}>
         <BsArrowBarLeft className='close-nav' onClick={toggleSidebar} />
-        <div
-          style={{
-            outline: "2px solid black",
-            fontSize: "20px",
-            float: "right",
-          }}>
-          <p>{username}</p>
-        </div>
 
         <ul className='side-list'>
           <li className='side-list-item' onClick={toggleSidebar}>
@@ -66,7 +58,10 @@ const Sidebar = ({ username }) => {
             </Link>
           </li>
         </ul>
-        <div className='sidebar-logout'>
+        <div className='footerLinks'>
+          <div>
+            <p>{username.charAt(0).toUpperCase()}</p>
+          </div>
           <h5 onClick={handleLogout}>Logout</h5>
         </div>
       </div>

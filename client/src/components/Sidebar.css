@@ -18,15 +18,37 @@
     z-index: 1;
     box-shadow: 0px 0px 20px black;
 }
-.sidebar-logout {
+.footerLinks {
     font-size: 1.5rem;
     color: white;
     position: absolute;
     bottom: 0;
     left: 30%;
+    
 }
 
-.sidebar-logout:hover {
+.footerLinks > div {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+    margin: 0 auto;
+    line-height: 30px;
+    color: #BA6BF3;
+    border: 1px solid #BA6BF3;
+}
+
+.footerLinks > div:hover {
+    cursor: pointer;
+    background: #BA6BF3;
+    color: #334860;
+    transform: scale(1.1);
+    transition: .5s ease-in;
+}
+
+
+.footerLinks > h5:hover {
     color:#BA6BF3;
     cursor: pointer;
 }
