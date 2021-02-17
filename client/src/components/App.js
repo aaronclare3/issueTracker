@@ -39,7 +39,11 @@ const App = () => {
           <>
             <Switch>
               <Route path='/register' render={Register} />
-              <Route exact path='/' component={Login} />
+              <Route
+                exact
+                path='/'
+                render={(props) => <Login {...props} loggedIn={loggedIn} />}
+              />
             </Switch>
           </>
         )}

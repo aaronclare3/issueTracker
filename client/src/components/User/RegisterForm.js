@@ -1,17 +1,20 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { registerUser } from "../../redux/actions/userActions.js";
+import { useHistory } from "react-router-dom";
 
-const RegisterForm = ({ history }) => {
+const RegisterForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [verifyPassword, setVerifyPassword] = useState("");
+  const history = useHistory();
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(registerUser({ username, password, verifyPassword }));
     history.push("/dashboard");
   };
+
   return (
     <div>
       <form onSubmit={(e) => handleSubmit(e)}>

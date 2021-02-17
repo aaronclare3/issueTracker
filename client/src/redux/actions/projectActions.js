@@ -5,6 +5,7 @@ import {
   DELETE_PROJECT,
   CREATE_PROJECT,
   CLEAR_PROJECT,
+  CLEAR_PROJECTS,
 } from "../constants/projectConstants";
 import axios from "axios";
 
@@ -55,6 +56,16 @@ export const clearProject = (id) => async (dispatch) => {
     dispatch({
       type: CLEAR_PROJECT,
       payload: id,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const clearProjects = () => async (dispatch) => {
+  try {
+    dispatch({
+      type: CLEAR_PROJECTS,
     });
   } catch (error) {
     console.log(error);

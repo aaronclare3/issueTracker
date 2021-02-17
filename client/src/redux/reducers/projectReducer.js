@@ -14,6 +14,8 @@ export const projectReducer = (state = initialState, action) => {
       return { ...state, project: action.payload };
     case "CLEAR_PROJECT":
       return { ...state, project: {} };
+    case "CLEAR_PROJECTS":
+      return { ...state, projects: [] };
     case "CREATE_ISSUE":
       const newIssue = action.payload;
       return {
@@ -42,6 +44,8 @@ export const projectReducer = (state = initialState, action) => {
         project: { ...state.project, issues: listWithoutIssue },
       };
     case "CHECK_LOGGED_IN":
+      return { ...state, loggedIn: action.payload };
+    case "LOGOUT_USER":
       return { ...state, loggedIn: action.payload };
     default:
       return state;

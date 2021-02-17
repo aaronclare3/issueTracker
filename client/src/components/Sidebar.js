@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 //Icons
 import { HiMenu } from "react-icons/hi";
@@ -15,8 +16,16 @@ import { logoutUser } from "../redux/actions/userActions";
 
 const Sidebar = () => {
   const [showSidebar, setShowSidebar] = useState(false);
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   const toggleSidebar = () => {
-    setShowSidebar((sidebar) => !showSidebar);
+    setShowSidebar((showSidebar) => !showSidebar);
+  };
+
+  const handleLogout = () => {
+    dispatch(logoutUser());
+    history.push("/");
   };
   return (
     <>
@@ -26,9 +35,11 @@ const Sidebar = () => {
 
       <div className={showSidebar ? "nav-menu nav-menu-active" : "nav-menu"}>
         <BsArrowBarLeft className='close-nav' onClick={toggleSidebar} />
+        <a onClick={handleLogout}>Logout</a>
+
         <ul className='side-list'>
           <li className='side-list-item' onClick={toggleSidebar}>
-            <Link to='/'>
+            <Link to='/dashboard'>
               <FaHome className='fa' /> Home
             </Link>
           </li>

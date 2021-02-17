@@ -2,6 +2,7 @@ import {
   REGISTER_USER,
   LOGIN_USER,
   CHECK_LOGGED_IN,
+  LOGOUT_USER,
 } from "../constants/userConstants";
 import axios from "axios";
 
@@ -49,6 +50,24 @@ export const checkLoggedIn = (user) => async (dispatch) => {
     dispatch({
       type: CHECK_LOGGED_IN,
       payload: checkUser,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const logoutUser = () => async (dispatch) => {
+  try {
+    const signoutUser = await axios
+      .get("http://localhost:4000/users/logout")
+      .then((res) => res.data);
+    dispatch({
+      type: CHECK_LOGGED_IN,
+      payload: false,
+    });
+    dispatch({
+      type: LOGOUT_USER,
+      payload: signoutUser,
     });
   } catch (error) {
     console.log(error);

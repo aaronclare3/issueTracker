@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import ProjectList from "../components/Project/ProjectList";
-import { getAllProjects } from "../redux/actions/projectActions";
+import { getAllProjects, clearProjects } from "../redux/actions/projectActions";
 import { useDispatch, useSelector } from "react-redux";
 import "./UsersProjects.css";
 
@@ -10,6 +10,7 @@ const UsersProjects = () => {
 
   useEffect(() => {
     dispatch(getAllProjects());
+    return () => dispatch(clearProjects());
   }, []);
 
   return (
