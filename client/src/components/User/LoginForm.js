@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { loginUser } from "../../redux/actions/userActions.js";
-import { Link } from "react-router-dom";
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
@@ -16,18 +15,28 @@ const LoginForm = () => {
   };
   return (
     <div>
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <input
-          type='text'
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <input
-          type='text'
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type='submit'>Login User</button>
+      <form className='projectForm form' onSubmit={(e) => handleSubmit(e)}>
+        <div className='form-group'>
+          <input
+            className='form-control'
+            type='text'
+            placeholder='Username...'
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </div>
+        <div className='form-group'>
+          <input
+            className='form-control'
+            type='text'
+            placeholder='Password...'
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <button className='projectForm-btn btn' type='submit'>
+          SIGN IN
+        </button>
         <Link to='/register'>Sign Up</Link>
       </form>
     </div>

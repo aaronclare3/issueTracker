@@ -35,7 +35,6 @@ const Sidebar = () => {
 
       <div className={showSidebar ? "nav-menu nav-menu-active" : "nav-menu"}>
         <BsArrowBarLeft className='close-nav' onClick={toggleSidebar} />
-        <a onClick={handleLogout}>Logout</a>
 
         <ul className='side-list'>
           <li className='side-list-item' onClick={toggleSidebar}>
@@ -59,6 +58,9 @@ const Sidebar = () => {
             </Link>
           </li>
         </ul>
+        <div className='sidebar-logout'>
+          <h5 onClick={handleLogout}>Logout</h5>
+        </div>
       </div>
     </>
   );

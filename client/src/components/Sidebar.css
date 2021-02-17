@@ -18,6 +18,18 @@
     z-index: 1;
     box-shadow: 0px 0px 20px black;
 }
+.sidebar-logout {
+    font-size: 1.5rem;
+    color: white;
+    position: absolute;
+    bottom: 0;
+    left: 30%;
+}
+
+.sidebar-logout:hover {
+    color:#BA6BF3;
+    cursor: pointer;
+}
 
 
 .nav-menu-active {
