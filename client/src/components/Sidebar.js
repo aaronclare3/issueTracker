@@ -10,6 +10,9 @@ import { FaChalkboard } from "react-icons/fa";
 //Styles
 import "./Sidebar.css";
 
+// Actions
+import { logoutUser } from "../redux/actions/userActions";
+
 const Sidebar = () => {
   const [showSidebar, setShowSidebar] = useState(false);
   const toggleSidebar = () => {

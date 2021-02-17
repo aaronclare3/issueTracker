@@ -5,12 +5,7 @@ import Dashboard from "../pages/Dashboard";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
 import Sidebar from "./Sidebar";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { checkLoggedIn } from "../redux/actions/userActions";
 import "./App.css";
@@ -28,21 +23,26 @@ const App = () => {
   return (
     <div className='App'>
       <Router>
-        <Sidebar />
-        <Switch>
-          <Route
-            path='/register'
-            render={(props) => <Register {...props} loggedIn={loggedIn} />}
-          />
-          <Route
-            exact
-            path='/'
-            render={(props) => <Login {...props} loggedIn={loggedIn} />}
-          />
-          <Route exact path='/project/:id' component={Project} />
-          <Route path='/projects' component={UsersProjects} />
-          <Route path='/dashboard' component={Dashboard} />
-        </Switch>
+        {loggedIn ? (
+          <>
+            <Sidebar />
+            <Switch>
+              <Route exact path='/project/:id' component={Project} />
+              <Route path='/projects' component={UsersProjects} />
+              <Route
+                path='/dashboard'
+                render={(props) => <Dashboard {...props} loggedIn={loggedIn} />}
+              />
+            </Switch>
+          </>
+        ) : (
+          <>
+            <Switch>
+              <Route path='/register' render={Register} />
+              <Route exact path='/' component={Login} />
+            </Switch>
+          </>
+        )}
       </Router>
     </div>
   );

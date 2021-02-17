@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { loginUser } from "../../redux/actions/userActions.js";
+import { Link } from "react-router-dom";
 
-const LoginForm = ({ history }) => {
+const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const handleSubmit = (e, history) => {
+  const history = useHistory();
+  const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(loginUser({ username, password }));
     history.push("/dashboard");
@@ -25,6 +28,7 @@ const LoginForm = ({ history }) => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button type='submit'>Login User</button>
+        <Link to='/register'>Sign Up</Link>
       </form>
     </div>
   );

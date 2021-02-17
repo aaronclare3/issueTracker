@@ -1,13 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import LoginForm from "../components/User/LoginForm";
 
-const Login = ({ history, loggedIn }) => {
-  useEffect(() => {
-    if (loggedIn) {
-      history.push("/dashboard");
-    }
-    console.log(loggedIn);
-  }, [loggedIn]);
+const Login = () => {
   return (
     <div>
       <LoginForm />
