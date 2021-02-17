@@ -14,7 +14,7 @@ import "./Sidebar.css";
 // Actions
 import { logoutUser } from "../redux/actions/userActions";
 
-const Sidebar = () => {
+const Sidebar = ({ username }) => {
   const [showSidebar, setShowSidebar] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -35,6 +35,14 @@ const Sidebar = () => {
 
       <div className={showSidebar ? "nav-menu nav-menu-active" : "nav-menu"}>
         <BsArrowBarLeft className='close-nav' onClick={toggleSidebar} />
+        <div
+          style={{
+            outline: "2px solid black",
+            fontSize: "20px",
+            float: "right",
+          }}>
+          <p>{username}</p>
+        </div>
 
         <ul className='side-list'>
           <li className='side-list-item' onClick={toggleSidebar}>

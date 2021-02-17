@@ -8,7 +8,7 @@ const Dashboard = ({ loggedIn, username }) => {
       {loggedIn ? (
         <>
           <div style={{ textAlign: "center" }}>
-            {username && <h1>Welcome {username}</h1>}
+            <h1>Welcome</h1>
             <h4>Create a project board...</h4>
           </div>
           <ProjectForm />

@@ -24,7 +24,7 @@ const App = () => {
   return (
     <div className='App'>
       <Router>
-        {loggedIn && <Sidebar />}
+        {loggedIn && <Sidebar username={username} />}
         <Switch>
           <Route
             exact
