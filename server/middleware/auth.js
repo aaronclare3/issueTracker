@@ -5,7 +5,6 @@ const auth = (req, res, next) => {
   try {
     const token = req.cookies.token;
     if (!token) return res.status(401).json({ message: "Unauthorized" });
-    console.log(token);
     const verified = jwt.verify(token, process.env.JWT_SECRET);
 
     // adding user id to request

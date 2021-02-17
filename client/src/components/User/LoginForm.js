@@ -6,10 +6,10 @@ const LoginForm = ({ history }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const handleSubmit = (e) => {
+  const handleSubmit = (e, history) => {
     e.preventDefault();
     dispatch(loginUser({ username, password }));
-    history.push("/");
+    history.push("/dashboard");
   };
   return (
     <div>

@@ -17,7 +17,6 @@ const ProjectForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("handlesubmit bro");
     const project = { title: projectTitle, description: projectDescription };
     dispatch(createProject(project));
     setProjectTitle("");

@@ -7,7 +7,6 @@ import axios from "axios";
 
 export const registerUser = (user) => async (dispatch) => {
   try {
-    console.log("registering user");
     const userRegister = await axios
       .post("http://localhost:4000/users", user)
       .then((res) => res.data);
@@ -26,7 +25,6 @@ export const registerUser = (user) => async (dispatch) => {
 
 export const loginUser = (user) => async (dispatch) => {
   try {
-    console.log("Logging in user");
     const userLogin = await axios
       .post("http://localhost:4000/users/login", user)
       .then((res) => res.data);
@@ -48,7 +46,6 @@ export const checkLoggedIn = (user) => async (dispatch) => {
     const checkUser = await axios
       .get("http://localhost:4000/users/loggedIn", user)
       .then((res) => res.data);
-    console.log(checkUser);
     dispatch({
       type: CHECK_LOGGED_IN,
       payload: checkUser,

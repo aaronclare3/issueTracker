@@ -27,7 +27,6 @@ router.get("/:id", auth, async (req, res) => {
 // create a project
 // if user is authorized, by logging in. Check this in the auth middleware
 router.post("/", auth, async (req, res) => {
-  console.log("here!");
   const project = new Project({
     title: req.body.title,
     description: req.body.description,

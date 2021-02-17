@@ -10,7 +10,7 @@ const RegisterForm = ({ history }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(registerUser({ username, password, verifyPassword }));
-    history.push("/");
+    history.push("/dashboard");
   };
   return (
     <div>

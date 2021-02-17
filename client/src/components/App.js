@@ -1,11 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import UsersProjects from "../pages/UsersProjects";
 import Project from "../pages/Project";
 import Dashboard from "../pages/Dashboard";
-import RegisterForm from "../components/User/RegisterForm";
-import LoginForm from "../components/User/LoginForm";
+import Register from "../pages/Register";
+import Login from "../pages/Login";
 import Sidebar from "./Sidebar";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { checkLoggedIn } from "../redux/actions/userActions";
 import "./App.css";
@@ -25,18 +30,18 @@ const App = () => {
       <Router>
         <Sidebar />
         <Switch>
-          {!loggedIn ? (
-            <>
-              <Route path='/register' component={RegisterForm} />
-              <Route path='/login' component={LoginForm} />
-            </>
-          ) : (
-            <>
-              <Route exact path='/project/:id' component={Project} />
-              <Route path='/projects' component={UsersProjects} />
-              <Route exact path='/' component={Dashboard} />
-            </>
-          )}
+          <Route
+            path='/register'
+            render={(props) => <Register {...props} loggedIn={loggedIn} />}
+          />
+          <Route
+            exact
+            path='/'
+            render={(props) => <Login {...props} loggedIn={loggedIn} />}
+          />
+          <Route exact path='/project/:id' component={Project} />
+          <Route path='/projects' component={UsersProjects} />
+          <Route path='/dashboard' component={Dashboard} />
         </Switch>
       </Router>
     </div>
