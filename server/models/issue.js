@@ -6,6 +6,7 @@ const issueSchema = new mongoose.Schema({
   priority: { type: String, required: true },
   status: { type: String, required: true },
   project: { type: mongoose.Schema.Types.ObjectId, ref: "Project" },
+  comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
 });
 
 module.exports = mongoose.model("Issue", issueSchema);
