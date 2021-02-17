@@ -2,10 +2,11 @@ const express = require("express");
 const router = express.Router();
 const Issue = require("../models/issue");
 const Project = require("../models/project");
+const auth = require("../middleware/auth");
 
 // create an issue
 
-router.post("/", async (req, res) => {
+router.post("/", auth, async (req, res) => {
   const issue = new Issue({
     title: req.body.title,
     description: req.body.description,

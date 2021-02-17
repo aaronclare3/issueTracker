@@ -1,12 +1,13 @@
-const initialState = {
+let initialState = {
   projects: [],
   project: {},
-  loggedIn: undefined,
+  loggedIn: false,
+  username: "",
 };
 
 export const projectReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "CREATE_USER":
+    case "CREATE_PROJECT":
       return { ...state, projects: [...state.projects, action.payload] };
     case "GET_ALL_PROJECTS":
       return { ...state, projects: action.payload };
@@ -14,6 +15,8 @@ export const projectReducer = (state = initialState, action) => {
       return { ...state, project: action.payload };
     case "CLEAR_PROJECT":
       return { ...state, project: {} };
+    case "CLEAR_PROJECTS":
+      return { ...state, projects: [] };
     case "CREATE_ISSUE":
       const newIssue = action.payload;
       return {
@@ -42,7 +45,29 @@ export const projectReducer = (state = initialState, action) => {
         project: { ...state.project, issues: listWithoutIssue },
       };
     case "CHECK_LOGGED_IN":
-      return { ...state, loggedIn: action.payload };
+      return {
+        ...state,
+        loggedIn: action.payload.isLoggedIn,
+        username: action.payload.username,
+      };
+    case "LOGOUT_USER":
+      return {
+        ...state,
+        loggedIn: false,
+        username: "",
+      };
+    case "LOGIN_USER":
+      return {
+        ...state,
+        loggedIn: true,
+        username: action.payload,
+      };
+    case "REGISTER_USER":
+      return {
+        ...state,
+        loggedIn: true,
+        username: action.payload,
+      };
     default:
       return state;
   }

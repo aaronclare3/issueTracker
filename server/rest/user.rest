@@ -15,11 +15,15 @@ POST http://localhost:4000/users/login
 Content-Type: application/json
 
 {
-    "username": "jimmy johns",
-    "password": "jimmy123"
+    "username": "richard sherman",
+    "password": "richard"
 }
 
 ###
  
 GET http://localhost:4000/users/
+
+###
+ 
+GET http://localhost:4000/users/loggedIn
 

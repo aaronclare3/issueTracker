@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 //Icons
 import { HiMenu } from "react-icons/hi";
@@ -13,10 +14,18 @@ import "./Sidebar.css";
 // Actions
 import { logoutUser } from "../redux/actions/userActions";
 
-const Sidebar = () => {
+const Sidebar = ({ username }) => {
   const [showSidebar, setShowSidebar] = useState(false);
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   const toggleSidebar = () => {
-    setShowSidebar((sidebar) => !showSidebar);
+    setShowSidebar((showSidebar) => !showSidebar);
+  };
+
+  const handleLogout = () => {
+    dispatch(logoutUser());
+    history.push("/");
   };
   return (
     <>
@@ -26,9 +35,10 @@ const Sidebar = () => {
 
       <div className={showSidebar ? "nav-menu nav-menu-active" : "nav-menu"}>
         <BsArrowBarLeft className='close-nav' onClick={toggleSidebar} />
+
         <ul className='side-list'>
           <li className='side-list-item' onClick={toggleSidebar}>
-            <Link to='/'>
+            <Link to='/dashboard'>
               <FaHome className='fa' /> Home
             </Link>
           </li>
@@ -48,6 +58,12 @@ const Sidebar = () => {
             </Link>
           </li>
         </ul>
+        <div className='footerLinks'>
+          <div>
+            <p>{username.charAt(0).toUpperCase()}</p>
+          </div>
+          <h5 onClick={handleLogout}>Logout</h5>
+        </div>
       </div>
     </>
   );

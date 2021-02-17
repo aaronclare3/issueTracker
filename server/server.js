@@ -21,7 +21,9 @@ app.use(cookieParser());
 const projectRoutes = require("./routes/project");
 const issueRoutes = require("./routes/issue");
 const userRoutes = require("./routes/user");
+const commentRoutes = require("./routes/comment");
 app.use("/projects", projectRoutes);
+app.use("/comments", commentRoutes);
 app.use("/issues", issueRoutes);
 app.use("/users", userRoutes);
 
