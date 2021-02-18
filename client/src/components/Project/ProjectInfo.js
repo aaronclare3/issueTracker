@@ -5,7 +5,7 @@ const ProjectInfo = ({ project }) => {
   return (
     <div className='projectInfoContainer'>
       <h2>{project.title}</h2>
-      <p>{project.description}</p>
+      <p>Description: {project.description}</p>
       <p>Owner: {project.creator}</p>
       <p>
         Completed Issues:{" "}

@@ -22,7 +22,7 @@ const CommentForm = ({ issue }) => {
   return (
     <div className='commentFormContainer'>
       <form className='commentForm form' onSubmit={(e) => handleSubmit(e)}>
-        <div>
+        <div className='form-row'>
           <input
             className='form-control'
             type='text'
@@ -30,10 +30,10 @@ const CommentForm = ({ issue }) => {
             onChange={(e) => setCommentContent(e.target.value)}
             placeholder='Comment...'
           />
+          <button className='btn btn-primary commentForm-btn' type='submit'>
+            Post
+          </button>
         </div>
-        <button className='btn commentForm-btn' type='submit'>
-          Submit Comment
-        </button>
       </form>
     </div>
   );
