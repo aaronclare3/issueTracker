@@ -56,7 +56,7 @@ const ProjectForm = () => {
           <input
             className='form-control'
             type='text'
-            placeholder='Link your code (optional)...'
+            placeholder='Link to code (optional)'
             value={projectCodeLink}
             onChange={(e) => handleCodeLinkChange(e.target.value)}
           />

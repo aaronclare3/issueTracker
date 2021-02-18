@@ -4,7 +4,10 @@ import { Redirect } from "react-router-dom";
 import ProjectList from "../components/Project/ProjectList";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getAllProjects, clearProjects } from "../redux/actions/projectActions";
+import {
+  getAllUsersProjects,
+  clearProjects,
+} from "../redux/actions/projectActions";
 import "./Dashboard.css";
 
 const Dashboard = ({ loggedIn, username }) => {
@@ -12,7 +15,7 @@ const Dashboard = ({ loggedIn, username }) => {
   const projects = useSelector((state) => state.projectReducer.projects);
 
   useEffect(() => {
-    dispatch(getAllProjects());
+    dispatch(getAllUsersProjects());
     return () => dispatch(clearProjects());
   }, []);
   return (
@@ -32,7 +35,7 @@ const Dashboard = ({ loggedIn, username }) => {
             <ProjectForm />
           </div>
           <div className='dashboard-bottom'>
-            <h4>Explore Projects</h4>
+            <h4>Explore All Projects</h4>
           </div>
         </>
       ) : (

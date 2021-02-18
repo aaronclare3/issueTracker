@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
 import ProjectList from "../components/Project/ProjectList";
-import { getAllProjects, clearProjects } from "../redux/actions/projectActions";
+import {
+  getAllUsersProjects,
+  clearProjects,
+} from "../redux/actions/projectActions";
 import { useDispatch, useSelector } from "react-redux";
 import "./UsersProjects.css";
 import { Redirect } from "react-router-dom";
@@ -12,7 +15,7 @@ const UsersProjects = () => {
   const user = useSelector((state) => state.projectReducer.username);
 
   useEffect(() => {
-    dispatch(getAllProjects());
+    dispatch(getAllUsersProjects());
     return () => dispatch(clearProjects());
   }, []);
 

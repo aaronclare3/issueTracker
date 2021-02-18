@@ -3,7 +3,7 @@ const router = express.Router();
 const Project = require("../models/project");
 const auth = require("../middleware/auth");
 
-// get all projects
+// get all users projects
 router.get("/", auth, async (req, res) => {
   try {
     const projects = await Project.find()
@@ -29,6 +29,36 @@ router.get("/", auth, async (req, res) => {
       });
     const usersProjects = projects.filter((proj) => proj.creator == req.user);
     res.json(usersProjects);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+// get all projects
+router.get("/all", async (req, res) => {
+  try {
+    const projects = await Project.find()
+      .populate({
+        path: "issues",
+        model: "Issue",
+        populate: {
+          path: "comments",
+          model: "Comment",
+          populate: {
+            path: "createdBy",
+            model: "User",
+          },
+        },
+      })
+      .populate({
+        path: "issues",
+        model: "Issue",
+        populate: {
+          path: "createdBy",
+          model: "User",
+        },
+      });
+    res.json(projects);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

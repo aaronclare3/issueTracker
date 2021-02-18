@@ -1,5 +1,6 @@
 import {
   GET_PROJECT,
+  GET_ALL_USERS_PROJECTS,
   GET_ALL_PROJECTS,
   UPDATE_PROJECT,
   DELETE_PROJECT,
@@ -23,13 +24,13 @@ export const createProject = (project) => async (dispatch) => {
   }
 };
 
-export const getAllProjects = () => async (dispatch) => {
+export const getAllUsersProjects = () => async (dispatch) => {
   try {
     const allProjects = await axios
       .get("http://localhost:4000/projects")
       .then((res) => res.data);
     dispatch({
-      type: GET_ALL_PROJECTS,
+      type: GET_ALL_USERS_PROJECTS,
       payload: allProjects,
     });
   } catch (error) {
