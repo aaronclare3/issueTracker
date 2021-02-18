@@ -1,6 +1,9 @@
 .projectItem{
     max-width: 40vw;
-    margin: 0 auto;
+    margin: 30px auto;
+    box-shadow: black 0px 7px 29px 0px;
+    background: #374C63;
+    border-radius: 20px;
 }
 
 .projectItem > a {
@@ -8,14 +11,15 @@
 }
 
 .projectItemText {
-    margin: 10px;
-    border: 1px solid white;
+    /* margin: 10px; */
+    /* border: 1px solid white; */
     text-align: center;
     color: white;
-    border-radius: 5px;
 }
 
 .projectItemText:hover {
-    border: 1px solid #BA6BF3;
+    /* border: 1px solid #BA6BF3; */
+    border-radius: 20px;
+    box-shadow: 0px 5px 10px #BA6BF3;
     color: #BA6BF3;
 }

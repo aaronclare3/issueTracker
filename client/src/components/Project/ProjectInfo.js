@@ -5,15 +5,19 @@ const ProjectInfo = ({ project }) => {
   return (
     <div className='projectInfoContainer'>
       <h2>{project.title}</h2>
-      <p>Description: {project.description}</p>
-      <p>Owner: {project.creator}</p>
       <p>
-        Completed Issues:{" "}
+        <b>Description: </b> {project.description}
+      </p>
+      <p>
+        <b>Creator:</b> {project.creator}
+      </p>
+      <p>
+        <b>Completed Issues: </b>
         {project.issues &&
           project.issues.filter((issue) => issue.status === "Completed").length}
       </p>
       <p>
-        Open Issues:{" "}
+        <b>Open Issues: </b>
         {project.issues &&
           project.issues.filter(
             (issue) =>
@@ -21,7 +25,7 @@ const ProjectInfo = ({ project }) => {
           ).length}
       </p>
 
-      <a href='https://github.com/aaronclare3/issueTracker' target='_blank'>
+      <a href={project.codeLink} target='_blank'>
         <svg
           xmlns='http://www.w3.org/2000/svg'
           width='20'

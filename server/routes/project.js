@@ -70,6 +70,7 @@ router.post("/", auth, async (req, res) => {
   const project = new Project({
     title: req.body.title,
     description: req.body.description,
+    codeLink: req.body.codeLink,
     creator: req.user,
   });
   try {
@@ -89,6 +90,9 @@ router.patch("/:id", auth, async (req, res) => {
     }
     if (req.body.description != null) {
       project.description = req.body.description;
+    }
+    if (req.body.codeLink != null) {
+      project.codeLink = req.body.codeLink;
     }
     const saveProject = await project.save();
     res.json(saveProject);

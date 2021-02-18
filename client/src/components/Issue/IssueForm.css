@@ -8,8 +8,10 @@
     margin: 30px auto;
     border-radius: 10px;
     padding: 10px;
-    border: 1px solid white;
+    /* border: 1px solid white; */
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    /* box-shadow: 0 5px 40px rgba(240, 46, 170, 0.7); */
+
 }
 
 
@@ -21,7 +23,7 @@
     background: #2C3D51;
     color: #BA6BF3;
     font-weight: bold;
-    border: 1px solid white;
+    border: none;
 }
 
 .issueForm > div > input::placeholder {
@@ -46,7 +48,7 @@
     width: 100%;
     color: white;
     font-weight: bold;
-    border: 1px solid;
+    /* border: 1px solid; */
 }
 
 .issueForm-btn:hover {
@@ -59,7 +61,7 @@
     width: 25%;
     color: white;
     font-weight: bold;
-    border: 1px solid;
+    /* border: 1px solid; */
     outline: none;
     border-radius: 4px;
 }

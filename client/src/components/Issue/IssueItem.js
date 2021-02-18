@@ -49,36 +49,42 @@ const IssueItem = ({ issue }) => {
   };
   return (
     <div>
-      <div className={`issueItem card ${showFullCard ? "mb-3" : "mb-1"}`}>
-        <div
-          className={`card-header ${showFullCard ? "" : "no-border"}`}
-          style={{ cursor: "pointer" }}
-          onClick={toggleShowFullCard}>
-          <svg
-            onClick={() => dispatch(deleteIssue(issue._id))}
-            style={{ cursor: "pointer" }}
-            xmlns='http://www.w3.org/2000/svg'
-            width='12'
-            height='12'
-            fill='currentColor'
-            className='bi bi-x-square-fill float-left'
-            viewBox='0 0 16 16'>
-            <path d='M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z' />
-          </svg>
-          <span className={`${status === "Completed" ? "strikethrough" : ""}`}>
-            <strong>{issue.title.toUpperCase()}</strong>
-          </span>
-          <svg
-            onClick={handleShow}
-            style={{ cursor: "pointer" }}
-            xmlns='http://www.w3.org/2000/svg'
-            width='12'
-            height='12'
-            fill='currentColor'
-            className='bi bi-three-dots float-right'
-            viewBox='0 0 16 16'>
-            <path d='M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z' />
-          </svg>
+      <div className={`issueItem card mb-3`}>
+        <div className={`card-header ${showFullCard ? "" : "no-border"}`}>
+          <div
+            onClick={toggleShowFullCard}
+            style={{
+              cursor: "pointer",
+              width: "100%",
+              margin: "0 auto",
+            }}>
+            <svg
+              onClick={() => dispatch(deleteIssue(issue._id))}
+              style={{ cursor: "pointer" }}
+              xmlns='http://www.w3.org/2000/svg'
+              width='12'
+              height='12'
+              fill='currentColor'
+              className='bi bi-x-square-fill float-left'
+              viewBox='0 0 16 16'>
+              <path d='M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z' />
+            </svg>
+            <span
+              className={`${status === "Completed" ? "strikethrough" : ""}`}>
+              <strong>{issue.title.toUpperCase()}</strong>
+            </span>
+            <svg
+              onClick={handleShow}
+              style={{ cursor: "pointer" }}
+              xmlns='http://www.w3.org/2000/svg'
+              width='12'
+              height='12'
+              fill='currentColor'
+              className='bi bi-three-dots float-right'
+              viewBox='0 0 16 16'>
+              <path d='M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z' />
+            </svg>
+          </div>
         </div>
         <div className={`card-body ${showFullCard ? "" : "display-none"}`}>
           <p className='card-text'>

@@ -3,7 +3,7 @@
     max-width: 18rem;
     margin: 0 auto;
     /* border: 1px solid white; */
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 
 }
 
@@ -16,10 +16,9 @@
 }
 .issueItem > .card-header {
     font-weight: bold;
-    /* border-bottom: 1px solid white; */
 }
 
-.card-header > .bi-x-square-fill:hover {
+.card-header > div > .bi-x-square-fill:hover {
     color: rgba(255, 0, 0, 0.653);
 }
 
