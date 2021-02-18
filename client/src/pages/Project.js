@@ -21,6 +21,7 @@ const Project = ({ match }) => {
   return (
     <div className='projectPageContainer'>
       <div className='project-left'>
+        <h2>Open an Issue</h2>
         <IssueForm project={project} />
       </div>
       <div className='project-right'>

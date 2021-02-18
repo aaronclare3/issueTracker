@@ -7,6 +7,12 @@
     transition: all 1s linear;
 }
 
+.issueListContainer > div > h1{
+    border-bottom: 1px solid white;
+    width: fit-content;
+    margin: 0 auto 12px auto;
+}
+
 .issueListContainer {
     margin-top: 25px;
 }

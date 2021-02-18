@@ -6,7 +6,6 @@
 }
 
 .issueItem:hover {
-    background: #334860;
     border: 1px solid #BA6BF3
 }
 
@@ -20,6 +19,10 @@
 
 .card-header > .bi-x-square-fill:hover {
     color: rgba(255, 0, 0, 0.653);
+}
+
+.issueItem .card-body {
+    text-align: start;
 }
 
 .display-none {

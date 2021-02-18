@@ -43,7 +43,7 @@ const IssueList = ({ issues }) => {
         {renderInProgress}
       </div>
       <div className='col'>
-        <h1>Completed</h1>
+        <h1>Done</h1>
         {renderCompleted}
       </div>
     </div>
