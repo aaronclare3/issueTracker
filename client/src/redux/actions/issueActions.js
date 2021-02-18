@@ -3,7 +3,6 @@ import {
   DELETE_ISSUE,
   UPDATE_ISSUE,
 } from "../constants/issueConstants";
-import { updateProject } from "./projectActions";
 import axios from "axios";
 
 export const createIssue = (issue) => async (dispatch) => {
@@ -11,6 +10,7 @@ export const createIssue = (issue) => async (dispatch) => {
     const issueAdd = await axios
       .post("http://localhost:4000/issues", issue)
       .then((res) => res.data);
+    console.log(issueAdd);
     dispatch({
       type: CREATE_ISSUE,
       payload: issueAdd,

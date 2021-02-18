@@ -68,6 +68,25 @@ export const projectReducer = (state = initialState, action) => {
         loggedIn: true,
         username: action.payload,
       };
+    case "CREATE_COMMENT":
+      const newComment = action.payload;
+      const issueToUpdate = state.project.issues.find(
+        (issue) => issue._id === newComment.issue
+      );
+      const issueUpdated = {
+        ...issueToUpdate,
+        comments: [...issueToUpdate.comments, newComment],
+      };
+      const newIssueList = state.project.issues.map((issue) => {
+        return issue._id == newComment.issue ? issueUpdated : issue;
+      });
+      return {
+        ...state,
+        project: {
+          ...state.project,
+          issues: newIssueList,
+        },
+      };
     default:
       return state;
   }

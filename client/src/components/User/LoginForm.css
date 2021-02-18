@@ -1,0 +1,54 @@
+.loginForm {
+    background: #334860;
+    width: 35vw;
+    margin: 30px auto;
+    border-radius: 10px;
+    padding: 10px;
+    border: 2px solid white;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.loginForm > div {
+    margin: 0px 0px 10px 0px;
+}
+
+.loginForm > div > input {
+    background: #2C3D51;
+    color: #BA6BF3;
+    font-weight: bold;
+    border: 2px solid white;
+}
+
+.loginForm > div > input::placeholder {
+    color: white;
+    font-weight: bold;
+}
+.loginForm > div > input:focus::placeholder {
+    color: #BA6BF3;
+    font-weight: bold;
+}
+
+.loginForm > div > input:focus {
+    border: 2px solid #BA6BF3;
+    background: #2C3D51;
+    caret-color: #BA6BF3;
+    color: #BA6BF3;
+    font-weight: bold;
+}
+
+.loginForm-btn {
+    background: #2C3D51;
+    width: 100%;
+    color: white;
+    font-weight: bold;
+    border: 2px solid;
+    margin-bottom: 5px;
+}
+
+.loginForm-btn:hover {
+    border: 2px solid #BA6BF3;
+    color: #BA6BF3;
+}
+
+
+

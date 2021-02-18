@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 import { loginUser } from "../../redux/actions/userActions.js";
+import "./LoginForm.css";
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
@@ -15,7 +16,7 @@ const LoginForm = () => {
   };
   return (
     <div>
-      <form className='projectForm form' onSubmit={(e) => handleSubmit(e)}>
+      <form className='loginForm form' onSubmit={(e) => handleSubmit(e)}>
         <div className='form-group'>
           <input
             className='form-control'
@@ -34,7 +35,7 @@ const LoginForm = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button className='projectForm-btn btn' type='submit'>
+        <button className='loginForm-btn btn' type='submit'>
           SIGN IN
         </button>
         <Link

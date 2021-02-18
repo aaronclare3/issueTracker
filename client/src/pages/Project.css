@@ -1,6 +1,9 @@
-.usersProjectsTitle > h3{
+.projectPageContainer {
+    margin-top: -50px;
+}
+.projectPageContainer > h1 {
     text-align: center;
     text-decoration: underline;
     text-underline-position: under;
-    margin-bottom: 20px;
 }
+

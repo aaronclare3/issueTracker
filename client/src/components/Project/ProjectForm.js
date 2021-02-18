@@ -44,7 +44,7 @@ const ProjectForm = () => {
           />
         </div>
         <button className='projectForm-btn btn' type='submit'>
-          ADD PROJECT
+          ADD BOARD
         </button>
       </form>
     </div>

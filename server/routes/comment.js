@@ -4,7 +4,7 @@ const Issue = require("../models/issue");
 const Comment = require("../models/comment");
 const auth = require("../middleware/auth");
 
-// create an issue
+// create a comment
 router.post("/", auth, async (req, res) => {
   const comment = new Comment({
     content: req.body.content,

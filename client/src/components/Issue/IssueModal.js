@@ -1,13 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 import { updateIssue } from "../../redux/actions/issueActions";
+import { getProject } from "../../redux/actions/projectActions";
 import { useDispatch } from "react-redux";
+import CommentForm from "../Comment/CommentForm";
+import CommentList from "../Comment/CommentList";
 
 const IssueModal = ({ issue, show, handleClose }) => {
   const [title, setTitle] = useState(issue && issue.title);
   const [description, setDescription] = useState(issue && issue.description);
   const [priority, setPriority] = useState(issue && issue.priority);
   const dispatch = useDispatch();
+  useEffect(() => {
+    if (!issue.createdBy.username) {
+      dispatch(getProject(issue.project));
+    }
+  }, [issue.createdBy]);
 
   const handleModalClose = (option) => {
     if (option === "nosave") {
@@ -50,6 +58,11 @@ const IssueModal = ({ issue, show, handleClose }) => {
             <option value='High'>High</option>
             <option value='Urgent'>Urgent</option>
           </select>
+          <div style={{ color: "black" }}>
+            Created By: {issue.createdBy.username}
+          </div>
+          <CommentList issue={issue} />
+          <CommentForm issue={issue} />
         </Modal.Body>
         <Modal.Footer>
           <Button

@@ -27,7 +27,6 @@ const IssueForm = ({ project }) => {
   };
   return (
     <div className='issueFormContainer'>
-      <h2>Create an issue...</h2>
       <form className='issueForm form' onSubmit={(e) => handleSubmit(e)}>
         <div>
           <input

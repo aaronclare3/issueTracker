@@ -9,6 +9,7 @@ const UsersProjects = () => {
   const dispatch = useDispatch();
   const projects = useSelector((state) => state.projectReducer.projects);
   const loggedIn = useSelector((state) => state.projectReducer.loggedIn);
+  const user = useSelector((state) => state.projectReducer.username);
 
   useEffect(() => {
     dispatch(getAllProjects());
@@ -17,7 +18,14 @@ const UsersProjects = () => {
 
   return (
     <div>
-      {loggedIn ? <ProjectList projectList={projects} /> : <Redirect to='/' />}
+      {loggedIn ? (
+        <div className='usersProjectsTitle'>
+          <h3>{user.toUpperCase()}'S BOARDS</h3>
+          <ProjectList projectList={projects} />
+        </div>
+      ) : (
+        <Redirect to='/' />
+      )}
     </div>
   );
 };

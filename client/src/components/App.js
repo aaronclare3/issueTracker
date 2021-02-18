@@ -5,6 +5,7 @@ import Dashboard from "../pages/Dashboard";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
 import Sidebar from "./Sidebar";
+import Header from "./Header";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { checkLoggedIn } from "../redux/actions/userActions";
@@ -24,6 +25,7 @@ const App = () => {
   return (
     <div className='App'>
       <Router>
+        <Header />
         {loggedIn && <Sidebar username={username} />}
         <Switch>
           <Route
