@@ -21,7 +21,7 @@ const ProjectInfo = ({ project }) => {
           ).length}
       </p>
 
-      <a href='github.com/aaronclare3/issueTracker'>
+      <a href='https://github.com/aaronclare3/issueTracker' target='_blank'>
         <svg
           xmlns='http://www.w3.org/2000/svg'
           width='20'
