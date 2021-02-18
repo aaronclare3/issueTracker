@@ -1,17 +1,39 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ProjectForm from "../components/Project/ProjectForm";
 import { Redirect } from "react-router-dom";
+import ProjectList from "../components/Project/ProjectList";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { getAllProjects, clearProjects } from "../redux/actions/projectActions";
+import "./Dashboard.css";
 
 const Dashboard = ({ loggedIn, username }) => {
+  const dispatch = useDispatch();
+  const projects = useSelector((state) => state.projectReducer.projects);
+
+  useEffect(() => {
+    dispatch(getAllProjects());
+    return () => dispatch(clearProjects());
+  }, []);
   return (
-    <div>
+    <div className='dashboardContainer'>
       {loggedIn ? (
         <>
-          <div style={{ textAlign: "center" }}>
-            <h1>Welcome</h1>
-            <h4>Create a project board...</h4>
+          <div className='dashboard-left'>
+            <div className='dashboardProjects'>
+              <h4>{username.toUpperCase()}'S BOARDS</h4>
+              {/* Only display first 3 items on dashboard page */}
+              <ProjectList projectList={projects.filter((el, i) => i <= 2)} />
+            </div>
+            <Link to='/projects'>Your boards</Link>
           </div>
-          <ProjectForm />
+          <div className='dashboard-right'>
+            <h4>CREATE ANOTHER BOARD</h4>
+            <ProjectForm />
+          </div>
+          <div className='dashboard-bottom'>
+            <h4>Explore Projects</h4>
+          </div>
         </>
       ) : (
         <Redirect to='/' />
