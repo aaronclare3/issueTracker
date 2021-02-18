@@ -4,12 +4,12 @@ const Issue = require("../models/issue");
 const Comment = require("../models/comment");
 const auth = require("../middleware/auth");
 
-// create an issue
+// create a comment
 router.post("/", auth, async (req, res) => {
   const comment = new Comment({
     content: req.body.content,
     issue: req.body.issue,
-    createdBy: req.body.user,
+    createdBy: req.user,
   });
   try {
     const saveComment = await comment.save();

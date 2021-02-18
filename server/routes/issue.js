@@ -13,6 +13,7 @@ router.post("/", auth, async (req, res) => {
     priority: req.body.priority,
     status: req.body.status,
     project: req.body.project,
+    createdBy: req.user,
   });
   try {
     const saveIssue = await issue.save();
@@ -41,8 +42,21 @@ router.patch("/:id", async (req, res) => {
     if (req.body.status != null) {
       issue.status = req.body.status;
     }
+    const popIssue = issue
+      .populate({
+        path: "project",
+        model: "Project",
+      })
+      .populate({
+        path: "createdBy",
+        model: "User",
+      })
+      .populate({
+        path: "comments",
+        model: "Comment",
+      });
     const saveIssue = await issue.save();
-    res.json(saveIssue);
+    res.json(popIssue);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }

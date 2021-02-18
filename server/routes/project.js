@@ -6,14 +6,27 @@ const auth = require("../middleware/auth");
 // get all projects
 router.get("/", auth, async (req, res) => {
   try {
-    const projects = await Project.find().populate({
-      path: "issues",
-      model: "Issue",
-      populate: {
-        path: "comments",
-        model: "Comment",
-      },
-    });
+    const projects = await Project.find()
+      .populate({
+        path: "issues",
+        model: "Issue",
+        populate: {
+          path: "comments",
+          model: "Comment",
+          populate: {
+            path: "createdBy",
+            model: "User",
+          },
+        },
+      })
+      .populate({
+        path: "issues",
+        model: "Issue",
+        populate: {
+          path: "createdBy",
+          model: "User",
+        },
+      });
     const usersProjects = projects.filter((proj) => proj.creator == req.user);
     res.json(usersProjects);
   } catch (error) {
@@ -24,14 +37,27 @@ router.get("/", auth, async (req, res) => {
 // get one project
 router.get("/:id", auth, async (req, res) => {
   try {
-    const project = await Project.findById(req.params.id).populate({
-      path: "issues",
-      model: "Issue",
-      populate: {
-        path: "comments",
-        model: "Comment",
-      },
-    });
+    const project = await Project.findById(req.params.id)
+      .populate({
+        path: "issues",
+        model: "Issue",
+        populate: {
+          path: "comments",
+          model: "Comment",
+          populate: {
+            path: "createdBy",
+            model: "User",
+          },
+        },
+      })
+      .populate({
+        path: "issues",
+        model: "Issue",
+        populate: {
+          path: "createdBy",
+          model: "User",
+        },
+      });
     res.json(project);
   } catch (error) {
     res.status(500).json({ message: error.message });

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { createIssue } from "../../redux/actions/issueActions";
 import { useDispatch } from "react-redux";
 import "./IssueForm.css";
+import { getProject } from "../../redux/actions/projectActions";
 
 const IssueForm = ({ project }) => {
   const [issueTitle, setIssueTitle] = useState("");
@@ -26,7 +27,6 @@ const IssueForm = ({ project }) => {
   };
   return (
     <div className='issueFormContainer'>
-      <h2>Create an issue...</h2>
       <form className='issueForm form' onSubmit={(e) => handleSubmit(e)}>
         <div>
           <input

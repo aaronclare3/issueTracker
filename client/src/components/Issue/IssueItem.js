@@ -2,14 +2,13 @@ import React, { useEffect, useState } from "react";
 import { updateIssue, deleteIssue } from "../../redux/actions/issueActions";
 import { useDispatch } from "react-redux";
 import "./IssueItem.css";
-
 import IssueModal from "./IssueModal";
+import { getProject } from "../../redux/actions/projectActions";
 
 const IssueItem = ({ issue }) => {
   const [show, setShow] = useState(false);
   const [status, setStatus] = useState(issue.status);
   const dispatch = useDispatch();
-  const x = issue.comments.map((comment) => <li>{comment.content}</li>);
 
   const handleClose = () => {
     setShow(false);
@@ -67,7 +66,6 @@ const IssueItem = ({ issue }) => {
         <div className='card-body'>
           <p className='card-text'>Description: {issue.description}</p>
           <p className='card-text'>Priority: {issue.priority}</p>
-          <ul>{x}</ul>
           {status === "Unassigned" || status === "InProgress" ? (
             <svg
               style={{ cursor: "pointer" }}

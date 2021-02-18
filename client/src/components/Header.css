@@ -1,0 +1,9 @@
+.header-container {
+    height: 60px;
+    color: #BA6BF3;
+    font-size: 40px;
+    text-align: center;
+    background: #374c63;
+    border-bottom: 1px solid #BA6BF3;
+    margin-bottom: 50px;
+}
