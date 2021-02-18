@@ -35,15 +35,15 @@ const IssueList = ({ issues }) => {
   return (
     <div className='row issueListContainer'>
       <div className='col'>
-        <h1>Unassigned</h1>
+        <p>Unassigned</p>
         {renderIssues}
       </div>
       <div className='col'>
-        <h1>In Progress</h1>
+        <p>In Progress</p>
         {renderInProgress}
       </div>
       <div className='col'>
-        <h1>Done</h1>
+        <p>Done</p>
         {renderCompleted}
       </div>
     </div>

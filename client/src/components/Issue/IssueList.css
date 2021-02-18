@@ -1,17 +1,8 @@
 .issueListContainer > div{
     height: fit-content;
-    text-align: center;
-    margin: 0px 30px 0px 30px;
+    margin: 10px 10px 0px 10px;
     border-radius: 5px;
+    padding: 10px 10px;
     background: #DEE2E6;
-}
-
-.issueListContainer > div > h1{
-    border-bottom: 1px solid white;
-    width: fit-content;
-    margin: 0 auto 12px auto;
-}
-
-.issueListContainer {
-    margin-top: 25px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 5px;
 }
