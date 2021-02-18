@@ -1,4 +1,5 @@
 import React from "react";
+import "./IssueList.css";
 
 // components
 import IssueItem from "./IssueItem";
@@ -32,16 +33,16 @@ const IssueList = ({ issues }) => {
       );
     });
   return (
-    <div className='row'>
-      <div style={{ textAlign: "center" }} className='col'>
+    <div className='row issueListContainer'>
+      <div className='col'>
         <h1>Unassigned</h1>
         {renderIssues}
       </div>
-      <div style={{ textAlign: "center" }} className='col'>
+      <div className='col'>
         <h1>In Progress</h1>
         {renderInProgress}
       </div>
-      <div style={{ textAlign: "center" }} className='col'>
+      <div className='col'>
         <h1>Completed</h1>
         {renderCompleted}
       </div>

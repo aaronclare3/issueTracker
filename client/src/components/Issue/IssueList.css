@@ -1,0 +1,11 @@
+.issueListContainer > div{
+    height: fit-content;
+    text-align: center;
+    margin: 0px 30px 0px 30px;
+    border-radius: 10px;
+    background: #374c63;
+}
+
+.issueListContainer {
+    margin-top: 25px;
+}

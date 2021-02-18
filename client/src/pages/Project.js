@@ -6,6 +6,7 @@ import "./Project.css";
 // components
 import IssueList from "../components/Issue/IssueList";
 import IssueForm from "../components/Issue/IssueForm";
+import ProjectInfo from "../components/Project/ProjectInfo";
 
 const Project = ({ match }) => {
   const project = useSelector((state) => state.projectReducer.project);
@@ -19,9 +20,15 @@ const Project = ({ match }) => {
 
   return (
     <div className='projectPageContainer'>
-      <h1>{project && project.title}</h1>
-      <IssueForm project={project} />
-      {project.issues && <IssueList issues={project.issues} />}
+      <div className='project-left'>
+        <IssueForm project={project} />
+      </div>
+      <div className='project-right'>
+        {project && <ProjectInfo project={project} />}
+      </div>
+      <div className='project-bottom'>
+        {project.issues && <IssueList issues={project.issues} />}
+      </div>
     </div>
   );
 };
