@@ -8,13 +8,25 @@ import { getProject } from "../../redux/actions/projectActions";
 const IssueItem = ({ issue }) => {
   const [show, setShow] = useState(false);
   const [status, setStatus] = useState(issue.status);
+  const [showFullCard, setShowFullCard] = useState(true);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (status === "Completed") {
+      setShowFullCard(false);
+    } else {
+      setShowFullCard(true);
+    }
+  }, [status]);
 
   const handleClose = () => {
     setShow(false);
   };
   const handleShow = () => {
     setShow(true);
+  };
+  const toggleShowFullCard = () => {
+    setShowFullCard((showFullCard) => !showFullCard);
   };
 
   const moveItem = (direction) => {
@@ -38,7 +50,10 @@ const IssueItem = ({ issue }) => {
   return (
     <div>
       <div className='issueItem card mb-3'>
-        <div className='card-header'>
+        <div
+          className={`card-header ${showFullCard ? "" : "no-border"}`}
+          style={{ cursor: "pointer" }}
+          onClick={toggleShowFullCard}>
           <svg
             onClick={() => dispatch(deleteIssue(issue._id))}
             style={{ cursor: "pointer" }}
@@ -50,7 +65,9 @@ const IssueItem = ({ issue }) => {
             viewBox='0 0 16 16'>
             <path d='M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z' />
           </svg>
-          {issue.title}
+          <span className={`${status === "Completed" ? "strikethrough" : ""}`}>
+            {issue.title}
+          </span>
           <svg
             onClick={handleShow}
             style={{ cursor: "pointer" }}
@@ -63,7 +80,7 @@ const IssueItem = ({ issue }) => {
             <path d='M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z' />
           </svg>
         </div>
-        <div className='card-body'>
+        <div className={`card-body ${showFullCard ? "" : "display-none"}`}>
           <p className='card-text'>Description: {issue.description}</p>
           <p className='card-text'>Priority: {issue.priority}</p>
           {status === "Unassigned" || status === "InProgress" ? (
