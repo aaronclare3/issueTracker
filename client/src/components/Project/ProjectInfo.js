@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./ProjectInfo.css";
 
 const ProjectInfo = ({ project }) => {
+  const [yearCreated, setYearCreated] = useState(null);
+  useEffect(() => {
+    let date = new Date(project.createdAt);
+    let year = date.getFullYear();
+    let month = date.getMonth();
+    setYearCreated(month + 1 + "/" + year);
+  }, [project]);
+
   return (
     <div className='projectInfoContainer'>
       <h2>{project.title}</h2>
@@ -23,6 +31,10 @@ const ProjectInfo = ({ project }) => {
             (issue) =>
               issue.status === "Unassigned" || issue.status === "InProgress"
           ).length}
+      </p>
+      <p>
+        <b>Active Since: </b>
+        {yearCreated}
       </p>
 
       <a href={project.codeLink} target='_blank'>

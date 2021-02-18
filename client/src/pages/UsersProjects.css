@@ -1,6 +1,10 @@
-.usersProjectsTitle > h3{
+.usersProjectsContainer > h3{
     text-align: center;
     text-decoration: underline;
     text-underline-position: under;
     margin-bottom: 20px;
+}
+
+.usersProjectsContainer {
+    text-align: center;
 }

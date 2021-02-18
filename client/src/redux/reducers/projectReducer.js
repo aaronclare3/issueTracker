@@ -13,6 +13,12 @@ export const projectReducer = (state = initialState, action) => {
       return { ...state, projects: action.payload };
     case "GET_PROJECT":
       return { ...state, project: action.payload };
+    case "DELETE_PROJECT":
+      const deletedProject = action.payload;
+      const listWithoutProject = state.projects.filter((proj) => {
+        return proj._id !== deletedProject._id;
+      });
+      return { ...state, projects: listWithoutProject };
     case "CLEAR_PROJECT":
       return { ...state, project: {} };
     case "CLEAR_PROJECTS":

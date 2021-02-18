@@ -51,6 +51,20 @@ export const getProject = (id) => async (dispatch) => {
   }
 };
 
+export const deleteProject = (id) => async (dispatch) => {
+  try {
+    const project = await axios
+      .delete(`http://localhost:4000/projects/${id}`)
+      .then((res) => res.data);
+    dispatch({
+      type: DELETE_PROJECT,
+      payload: project,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const clearProject = (id) => async (dispatch) => {
   try {
     dispatch({

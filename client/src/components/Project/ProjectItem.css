@@ -6,20 +6,20 @@
     border-radius: 20px;
 }
 
+.projectItem:hover {
+    box-shadow: 0px 5px 10px #BA6BF3;
+    border-radius: 20px;
+}
+
 .projectItem > a {
     text-decoration: none;
 }
 
-.projectItemText {
-    /* margin: 10px; */
-    /* border: 1px solid white; */
-    text-align: center;
-    color: white;
+.projectItem > .bi-x-square-fill:hover {
+    color: rgba(255, 0, 0, 0.653);
 }
 
-.projectItemText:hover {
-    /* border: 1px solid #BA6BF3; */
-    border-radius: 20px;
-    box-shadow: 0px 5px 10px #BA6BF3;
-    color: #BA6BF3;
+.projectItemText {
+    text-align: center;
+    color: white;
 }

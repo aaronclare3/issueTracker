@@ -19,7 +19,7 @@ const UsersProjects = () => {
   return (
     <div>
       {loggedIn ? (
-        <div className='usersProjectsTitle'>
+        <div className='usersProjectsContainer'>
           <h3>{user.toUpperCase()}'S BOARDS</h3>
           <ProjectList projectList={projects} />
         </div>
