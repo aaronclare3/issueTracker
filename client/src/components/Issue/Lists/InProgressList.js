@@ -21,11 +21,14 @@ const InProgressList = ({ issues }) => {
     <div>
       {renderInProgress}
       {!issueFormActive && (
-        <a href='' onClick={toggleIssueForm} className='small'>
+        <p
+          onClick={toggleIssueForm}
+          style={{ cursor: "pointer" }}
+          className='small text-primary m-0'>
           Add Issue
-        </a>
+        </p>
       )}
-      {issueFormActive && <IssueForm />}
+      {issueFormActive && <IssueForm status={"InProgress"} />}
     </div>
   );
 };
