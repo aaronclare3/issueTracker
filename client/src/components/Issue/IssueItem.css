@@ -10,3 +10,16 @@
     align-items: center;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 5px;    
 }
+
+.issueItem > div {
+    display: flex;
+    align-items: center;
+}
+
+.issueItem > div > svg {
+    cursor: pointer;
+}
+
+.issueItem > div > svg:hover {
+    color: #43A745;
+}
