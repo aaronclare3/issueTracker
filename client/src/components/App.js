@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import UsersProjects from "../pages/UsersProjects";
 import Project from "../pages/Project";
 import Dashboard from "../pages/Dashboard";
 import Register from "../pages/Register";
@@ -35,22 +34,11 @@ const App = () => {
             component={Project}
           />
           <Route
-            path='/projects'
-            render={(props) => (
-              <UsersProjects
-                {...props}
-                loggedIn={loggedIn}
-                username={username}
-              />
-            )}
-          />
-          <Route
             path='/dashboard'
             render={(props) => (
               <Dashboard {...props} username={username} loggedIn={loggedIn} />
             )}
           />
-
           <Route path='/register' render={(props) => <Register {...props} />} />
           <Route exact path='/' render={(props) => <Login {...props} />} />
         </Switch>

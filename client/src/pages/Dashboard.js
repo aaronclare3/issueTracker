@@ -20,6 +20,11 @@ const Dashboard = ({ loggedIn, username }) => {
     return () => dispatch(clearProjects());
   }, []);
   return (
+    <div>
+      <Slider />
+      <ProjectList projectList={projects} />
+    </div>
+
     // <div className='dashboardContainer'>
     //   {loggedIn ? (
     //     <>
@@ -44,7 +49,6 @@ const Dashboard = ({ loggedIn, username }) => {
     //     <Redirect to='/' />
     //   )}
     // </div>
-    <Slider />
   );
 };
 
