@@ -9,11 +9,11 @@
     position: fixed;
     left: -100%;
     top: 0;
-    background: #334860;
+    background: #343A40;
     height: 100vh;
     width: 250px;
     transition: 850ms ease-in;
-    color: white;
+    color: #8F9295;
     font-size: 30px;
     z-index: 1;
     box-shadow: 0px 0px 20px black;
@@ -24,6 +24,8 @@
     position: absolute;
     bottom: 0;
     left: 30%;
+    color: #8F9295;
+
     
 }
 
@@ -35,13 +37,13 @@
     text-align: center;
     margin: 0 auto;
     line-height: 30px;
-    color: #BA6BF3;
-    border: 1px solid #BA6BF3;
+    color: #457BFF;
+    border: 1px solid #457BFF;
 }
 
 .footerLinks > div:hover {
     cursor: pointer;
-    background: #BA6BF3;
+    background: #457BFF;
     color: #334860;
     transform: scale(1.1);
     transition: .5s ease-in;
@@ -49,7 +51,7 @@
 
 
 .footerLinks > h5:hover {
-    color:#BA6BF3;
+    color:#457BFF;
     cursor: pointer;
 }
 
@@ -66,12 +68,8 @@
 }
 
 .close-nav:hover, .open-nav:hover {
-    color: #BA6BF3;
+    color: #457BFF;
     cursor: pointer;
-}
-
-.open-nav{
-    color: white;
 }
 
 .fa {
@@ -98,7 +96,7 @@
 
 .side-list-item > a {
     text-decoration: none;
-    color: white;
+    color: #8F9295;
     width: 100%;
     height: 100%;
     margin: 0;
@@ -106,5 +104,5 @@
 }
 
 .side-list-item > a:hover {
-    color:#BA6BF3;
+    color:#457BFF;
 }

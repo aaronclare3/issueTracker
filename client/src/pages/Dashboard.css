@@ -11,7 +11,7 @@
 
 .dashboard-right {
     text-align: center;
-    border-left: 1px solid #BA6BF3;
+    border-left: 1px solid #457BFF;
 }
 
 .dashboard-left {
@@ -19,7 +19,7 @@
 }
 
 .dashboard-bottom {
-    border-top: 1px solid #BA6BF3;
+    border-top: 1px solid #457BFF;
     grid-column-start: 1;
     grid-column-end: 3;
     margin: 0px 30px;
