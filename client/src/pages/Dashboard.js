@@ -13,6 +13,7 @@ import "./Dashboard.css";
 
 const Dashboard = ({ loggedIn, username }) => {
   const [list, setList] = useState(null);
+  const [explore, setExplore] = useState(false);
 
   const userProjects = useSelector((state) => state.projectReducer.projects);
   const exploreProjects = useSelector(
@@ -20,17 +21,18 @@ const Dashboard = ({ loggedIn, username }) => {
   );
 
   const getListFromSlider = (left) => {
-    console.log(left);
+    // if slider is on left, set list to users projects, if on right, set list to explore
     left ? setList(userProjects) : setList(exploreProjects);
+    left ? setExplore(false) : setExplore(true);
   };
 
   return (
     <div className='container dashboard'>
       <Slider getListFromSlider={getListFromSlider} />
       {list != null ? (
-        <ProjectList list={list} />
+        <ProjectList list={list} explore={explore} />
       ) : (
-        <ProjectList list={userProjects} />
+        <ProjectList list={userProjects} explore={explore} />
       )}
     </div>
 

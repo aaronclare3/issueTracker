@@ -13,14 +13,17 @@ const Searchbar = ({ projects, passUpdatedList }) => {
       });
     if (updatedList.length !== 0) {
       passUpdatedList(updatedList);
+    } else {
+      passUpdatedList([]);
     }
   };
 
   return (
     <div className='search'>
       <input
+        className='form-control'
         type='text'
-        placeholder='Search'
+        placeholder='Search for a project...'
         onChange={(e) => filterHandler(e.target.value)}
         value={userSearchFilter}
       />

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ProjectItem from "./ProjectItem";
 import Searchbar from "../Searchbar";
 
-const ProjectList = ({ list }) => {
+const ProjectList = ({ list, explore }) => {
   const [searchedList, setSearchedList] = useState(null);
 
   const passUpdatedList = (updatedListFromSearch) => {
@@ -13,17 +13,21 @@ const ProjectList = ({ list }) => {
       <div className='row'>
         <div className='col'>
           <div className='row'>
-            <h3 className='mr-2'>Your Projects</h3>
+            <h3 className='mr-2'>
+              {explore ? "Explore Community Projects" : "Your Projects"}
+            </h3>
             <span className='mt-2'>
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                width='20'
-                height='20'
-                fill='currentColor'
-                className='bi bi-plus-circle-fill'
-                viewBox='0 0 16 16'>
-                <path d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z' />
-              </svg>
+              {!explore && (
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  width='20'
+                  height='20'
+                  fill='currentColor'
+                  className='bi bi-plus-circle-fill'
+                  viewBox='0 0 16 16'>
+                  <path d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z' />
+                </svg>
+              )}
             </span>
           </div>
         </div>
