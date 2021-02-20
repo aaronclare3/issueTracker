@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ProjectItem from "./ProjectItem";
+import Searchbar from "../Searchbar";
 
 const ProjectList = ({ projectList }) => {
+  const [searchedList, setSearchedList] = useState(null);
+
+  const passUpdatedList = (updatedListFromSearch) => {
+    setSearchedList(updatedListFromSearch);
+  };
   return (
     <div className='projectListContainer container mt-4'>
       <div className='row'>
@@ -23,22 +29,23 @@ const ProjectList = ({ projectList }) => {
         </div>
         <div className='col d-flex justify-content-end'>
           <div className='row'>
-            <input type='text' placeholder='search placeholder' />
+            <Searchbar
+              projects={projectList}
+              passUpdatedList={passUpdatedList}
+            />
           </div>
         </div>
       </div>
       <div className='row mt-3'>
-        {projectList &&
-          projectList.map((proj, i) => {
-            return (
-              <div
-                className={`col-6 m-0 p-0 ${
-                  i % 2 === 0 ? "pr-2" : "pl-2"
-                } pb-3`}>
-                <ProjectItem key={proj._id} project={proj} />
-              </div>
-            );
-          })}
+        {(searchedList ? searchedList : projectList).map((proj, i) => {
+          return (
+            <div
+              key={proj._id}
+              className={`col-6 m-0 p-0 ${i % 2 === 0 ? "pr-2" : "pl-2"} pb-3`}>
+              <ProjectItem project={proj} />
+            </div>
+          );
+        })}
       </div>
     </div>
   );
