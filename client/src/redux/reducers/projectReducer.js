@@ -3,6 +3,7 @@ let initialState = {
   project: {},
   loggedIn: false,
   username: "",
+  exploreProjects: [],
 };
 
 export const projectReducer = (state = initialState, action) => {
@@ -11,6 +12,8 @@ export const projectReducer = (state = initialState, action) => {
       return { ...state, projects: [...state.projects, action.payload] };
     case "GET_ALL_USERS_PROJECTS":
       return { ...state, projects: action.payload };
+    case "GET_ALL_PROJECTS":
+      return { ...state, exploreProjects: action.payload };
     case "GET_PROJECT":
       return { ...state, project: action.payload };
     case "DELETE_PROJECT":

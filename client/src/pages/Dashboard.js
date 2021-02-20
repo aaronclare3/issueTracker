@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ProjectForm from "../components/Project/ProjectForm";
 import { Redirect } from "react-router-dom";
 import ProjectList from "../components/Project/ProjectList";
 import Slider from "../components/Slider";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
   getAllUsersProjects,
@@ -12,17 +12,26 @@ import {
 import "./Dashboard.css";
 
 const Dashboard = ({ loggedIn, username }) => {
-  const dispatch = useDispatch();
-  const projects = useSelector((state) => state.projectReducer.projects);
+  const [list, setList] = useState(null);
 
-  useEffect(() => {
-    dispatch(getAllUsersProjects());
-    return () => dispatch(clearProjects());
-  }, []);
+  const userProjects = useSelector((state) => state.projectReducer.projects);
+  const exploreProjects = useSelector(
+    (state) => state.projectReducer.exploreProjects
+  );
+
+  const getListFromSlider = (left) => {
+    console.log(left);
+    left ? setList(userProjects) : setList(exploreProjects);
+  };
+
   return (
     <div className='container dashboard'>
-      <Slider />
-      <ProjectList projectList={projects} />
+      <Slider getListFromSlider={getListFromSlider} />
+      {list != null ? (
+        <ProjectList list={list} />
+      ) : (
+        <ProjectList list={userProjects} />
+      )}
     </div>
 
     // <div className='dashboardContainer'>

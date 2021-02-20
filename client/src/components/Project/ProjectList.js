@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ProjectItem from "./ProjectItem";
 import Searchbar from "../Searchbar";
 
-const ProjectList = ({ projectList }) => {
+const ProjectList = ({ list }) => {
   const [searchedList, setSearchedList] = useState(null);
 
   const passUpdatedList = (updatedListFromSearch) => {
@@ -29,15 +29,12 @@ const ProjectList = ({ projectList }) => {
         </div>
         <div className='col d-flex justify-content-end'>
           <div className='row'>
-            <Searchbar
-              projects={projectList}
-              passUpdatedList={passUpdatedList}
-            />
+            <Searchbar projects={list} passUpdatedList={passUpdatedList} />
           </div>
         </div>
       </div>
       <div className='row mt-3'>
-        {(searchedList ? searchedList : projectList).map((proj, i) => {
+        {(searchedList ? searchedList : list).map((proj, i) => {
           return (
             <div
               key={proj._id}

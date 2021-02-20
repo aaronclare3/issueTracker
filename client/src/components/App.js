@@ -8,6 +8,11 @@ import Header from "./Header";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { checkLoggedIn } from "../redux/actions/userActions";
+import {
+  getAllProjects,
+  getAllUsersProjects,
+  clearProjects,
+} from "../redux/actions/projectActions";
 import "./App.css";
 import axios from "axios";
 
@@ -19,7 +24,10 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(getAllProjects());
     dispatch(checkLoggedIn());
+    dispatch(getAllUsersProjects());
+    return () => dispatch(clearProjects());
   }, []);
   return (
     <div className='App'>

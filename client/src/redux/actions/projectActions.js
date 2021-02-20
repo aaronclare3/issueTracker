@@ -24,6 +24,19 @@ export const createProject = (project) => async (dispatch) => {
   }
 };
 
+export const getAllProjects = () => async (dispatch) => {
+  try {
+    const allProjects = await axios
+      .get("http://localhost:4000/projects/all")
+      .then((res) => res.data);
+    dispatch({
+      type: GET_ALL_PROJECTS,
+      payload: allProjects,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
 export const getAllUsersProjects = () => async (dispatch) => {
   try {
     const allProjects = await axios
