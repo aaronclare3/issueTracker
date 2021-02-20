@@ -22,6 +22,7 @@ const CompletedList = ({ issues, projectId }) => {
     );
     setIssueFormActive((issueFormActive) => !issueFormActive);
   };
+
   const renderCompleted =
     issues.length > 0 &&
     issues.map((issue) => {

@@ -3,10 +3,10 @@ import "./IssueListContainer.css";
 import { useSelector } from "react-redux";
 
 // components
-import IssueForm from "./IssueForm";
-import CompletedList from "./Lists/CompletedList";
-import InProgressList from "./Lists/InProgressList";
-import UnassignedList from "./Lists/UnassignedList";
+import IssueForm from "../IssueForm";
+import CompletedList from "./CompletedList";
+import InProgressList from "./InProgressList";
+import UnassignedList from "./UnassignedList";
 
 const IssueListContainer = ({ issues }) => {
   // get projectID here so we dont have to do it 3 times in each of the lists

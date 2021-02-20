@@ -4,7 +4,7 @@ import { getProject, clearProject } from "../redux/actions/projectActions";
 import "./Project.css";
 
 // components
-import IssueListContainer from "../components/Issue/IssueListContainer";
+import IssueListContainer from "../components/Issue/Lists/IssueListContainer";
 import IssueForm from "../components/Issue/IssueForm";
 import ProjectInfo from "../components/Project/ProjectInfo";
 
