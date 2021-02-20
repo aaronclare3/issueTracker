@@ -25,13 +25,13 @@ const ProjectInfo = ({ project }) => {
       </a> */}
       <h1>{project.title}</h1>
       <p>{project.description}</p>
-      <p>
+      <p className='small mb-0'>
         {project.issues &&
           project.issues.filter((issue) => issue.status === "Completed")
             .length}{" "}
         Completed Issues
       </p>
-      <p>
+      <p className='small'>
         {project.issues &&
           project.issues.filter(
             (issue) =>
