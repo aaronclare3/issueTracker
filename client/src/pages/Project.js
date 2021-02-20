@@ -4,7 +4,7 @@ import { getProject, clearProject } from "../redux/actions/projectActions";
 import "./Project.css";
 
 // components
-import IssueList from "../components/Issue/IssueList";
+import IssueListContainer from "../components/Issue/Lists/IssueListContainer";
 import IssueForm from "../components/Issue/IssueForm";
 import ProjectInfo from "../components/Project/ProjectInfo";
 
@@ -19,16 +19,16 @@ const Project = ({ match }) => {
   }, [match.params.id]);
 
   return (
-    <div className='projectPageContainer'>
-      <div className='project-left'>
-        <h2>Open an Issue</h2>
-        <IssueForm project={project} />
+    <div className='container'>
+      <div className='row'>
+        <div className='col-12'>
+          {project && <ProjectInfo project={project} />}
+        </div>
       </div>
-      <div className='project-right'>
-        {project && <ProjectInfo project={project} />}
-      </div>
-      <div className='project-bottom'>
-        {project.issues && <IssueList issues={project.issues} />}
+      <div className='row'>
+        <div className='col-12'>
+          {project.issues && <IssueListContainer issues={project.issues} />}
+        </div>
       </div>
     </div>
   );

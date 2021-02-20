@@ -1,10 +1,13 @@
 body {
     background: #F8F9FA;
-    color: black;
 }
+
 .App {
     height: 100%;
     width: 100%;
     min-height: 1000px;
-    font-family: "Courier New", "Lucida Console", monospace;
 }
+/* 
+*{
+    border: 1px solid black;
+} */

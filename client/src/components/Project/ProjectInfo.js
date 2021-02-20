@@ -12,31 +12,8 @@ const ProjectInfo = ({ project }) => {
 
   return (
     <div className='projectInfoContainer'>
-      <h2>{project.title}</h2>
-      <p>
-        <b>Description: </b> {project.description}
-      </p>
-      <p>
-        <b>Creator:</b> {project.creator}
-      </p>
-      <p>
-        <b>Completed Issues: </b>
-        {project.issues &&
-          project.issues.filter((issue) => issue.status === "Completed").length}
-      </p>
-      <p>
-        <b>Open Issues: </b>
-        {project.issues &&
-          project.issues.filter(
-            (issue) =>
-              issue.status === "Unassigned" || issue.status === "InProgress"
-          ).length}
-      </p>
-      <p>
-        <b>Active Since: </b>
-        {yearCreated}
-      </p>
-
+      <h1>{project.title}</h1>
+      <p>{project.description}</p>
       <a href={project.codeLink} target='_blank'>
         <svg
           xmlns='http://www.w3.org/2000/svg'

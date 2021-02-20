@@ -1,34 +1,25 @@
 .issueItem {
     background: #FFFFFF;
-    max-width: 18rem;
-    margin: 0 auto;
-
+    width: 100%;
+    margin: 0 auto 15px auto;
+    border-radius: 7px;
+    min-height: 40px;
+    height: fit-content;
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 5px;    
 }
 
-.issueItem:hover {
-    border: 1px solid #BA6BF3
+.issueItem > div {
+    display: flex;
+    align-items: center;
 }
 
-.no-border {
-    border-bottom: 0px orange !important;
-}
-.issueItem > .card-header {
-    font-weight: bold;
+.issueItem > div > svg {
+    cursor: pointer;
 }
 
-.card-header > div > .bi-x-square-fill:hover {
-    color: rgba(255, 0, 0, 0.653);
-}
-
-.issueItem .card-body {
-    text-align: start;
-}
-
-.display-none {
-    display: none;
-}
-
-
-.strikethrough {
-    text-decoration: line-through;
+.issueItem > div > svg:hover {
+    color: #43A745;
 }

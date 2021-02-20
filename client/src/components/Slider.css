@@ -1,0 +1,22 @@
+.projectSlider, .issueSlider {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    border-radius: 7px;
+    margin: 0 5px 0 5px !important;
+    transition: ease-in .25s;
+    cursor: pointer;
+}
+
+.issueSlider:hover, .projectSlider:hover {
+    color: #457BFF !important;
+}
+
+
+.sliderContainer {
+    padding: 7px;
+    background: #E9ECEF;
+    border-radius: 10px;
+}

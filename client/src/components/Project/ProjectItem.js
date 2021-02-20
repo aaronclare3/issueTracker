@@ -1,30 +1,56 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 import "./ProjectItem.css";
 import { deleteProject } from "../../redux/actions/projectActions";
 import { useDispatch } from "react-redux";
 
 const ProjectItem = ({ project }) => {
+  const [hover, setHover] = useState(false);
   const dispatch = useDispatch();
+  const history = useHistory();
+  const routeToProject = () => {
+    history.push(`/project/${project._id}`);
+  };
+  const handleShow = () => {
+    console.log("handling show!!!");
+  };
   return (
-    <div className='projectItem'>
-      <Link to={`/project/${project._id}`}>
-        <div className='projectItemText'>
-          <h2>{project.title}</h2>
-          <h5>{project.description}</h5>
+    <div
+      onClick={routeToProject}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      className='projectItem card'>
+      <div className='card-body rounded'>
+        <div className='row'>
+          <h5 className='card-title col-9'>{project.title}</h5>
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className='ml-auto col-2 d-flex align-items-start justify-content-end'>
+            {hover && (
+              <svg
+                onClick={handleShow}
+                xmlns='http://www.w3.org/2000/svg'
+                width='16'
+                height='16'
+                fill='currentColor'
+                className='bi bi-three-dots-vertical'
+                viewBox='0 0 16 16'>
+                <path d='M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z' />
+              </svg>
+            )}
+          </div>
         </div>
-      </Link>
-      <svg
-        onClick={() => dispatch(deleteProject(project._id))}
-        style={{ cursor: "pointer" }}
-        xmlns='http://www.w3.org/2000/svg'
-        width='12'
-        height='12'
-        fill='currentColor'
-        className='bi bi-x-square-fill'
-        viewBox='0 0 16 16'>
-        <path d='M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z' />
-      </svg>
+        <div className='row projectItemBottom text-secondary'>
+          <div className='col-8'>
+            {
+              project.issues.filter((issue) => issue.status === "Completed")
+                .length
+            }
+            /{project.issues.length} issues completed
+          </div>
+          <div className='col d-flex justify-content-end '>hi</div>
+        </div>
+      </div>
     </div>
   );
 };

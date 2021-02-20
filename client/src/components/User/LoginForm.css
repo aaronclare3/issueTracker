@@ -14,7 +14,7 @@
 
 .loginForm > div > input {
     background: #2C3D51;
-    color: #BA6BF3;
+    color: #457BFF;
     font-weight: bold;
     border: 1px solid white;
 }
@@ -24,15 +24,15 @@
     font-weight: bold;
 }
 .loginForm > div > input:focus::placeholder {
-    color: #BA6BF3;
+    color: #457BFF;
     font-weight: bold;
 }
 
 .loginForm > div > input:focus {
-    border: 1px solid #BA6BF3;
+    border: 1px solid #457BFF;
     background: #2C3D51;
-    caret-color: #BA6BF3;
-    color: #BA6BF3;
+    caret-color: #457BFF;
+    color: #457BFF;
     font-weight: bold;
 }
 
@@ -46,8 +46,8 @@
 }
 
 .loginForm-btn:hover {
-    border: 1px solid #BA6BF3;
-    color: #BA6BF3;
+    border: 1px solid #457BFF;
+    color: #457BFF;
 }
 
 

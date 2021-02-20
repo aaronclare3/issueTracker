@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import UsersProjects from "../pages/UsersProjects";
 import Project from "../pages/Project";
 import Dashboard from "../pages/Dashboard";
 import Register from "../pages/Register";
@@ -9,6 +8,11 @@ import Header from "./Header";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { checkLoggedIn } from "../redux/actions/userActions";
+import {
+  getAllProjects,
+  getAllUsersProjects,
+  clearProjects,
+} from "../redux/actions/projectActions";
 import "./App.css";
 import axios from "axios";
 
@@ -20,7 +24,10 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(getAllProjects());
     dispatch(checkLoggedIn());
+    dispatch(getAllUsersProjects());
+    return () => dispatch(clearProjects());
   }, []);
   return (
     <div className='App'>
@@ -35,22 +42,11 @@ const App = () => {
             component={Project}
           />
           <Route
-            path='/projects'
-            render={(props) => (
-              <UsersProjects
-                {...props}
-                loggedIn={loggedIn}
-                username={username}
-              />
-            )}
-          />
-          <Route
             path='/dashboard'
             render={(props) => (
               <Dashboard {...props} username={username} loggedIn={loggedIn} />
             )}
           />
-
           <Route path='/register' render={(props) => <Register {...props} />} />
           <Route exact path='/' render={(props) => <Login {...props} />} />
         </Switch>

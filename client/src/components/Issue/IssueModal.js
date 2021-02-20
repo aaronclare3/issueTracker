@@ -36,30 +36,22 @@ const IssueModal = ({ issue, show, handleClose }) => {
       <Modal show={show} onHide={handleClose}>
         <div className='issueModalContainer'>
           <Modal.Header closeButton>
-            <Modal.Title>
-              <input
-                className='form-control'
-                type='text'
-                onChange={(e) => setTitle(e.target.value)}
-                value={title}
-              />
-            </Modal.Title>
+            <Modal.Title></Modal.Title>
+            <input
+              style={{ width: "100%" }}
+              className='form-control'
+              type='text'
+              onChange={(e) => setTitle(e.target.value)}
+              value={title}
+            />
           </Modal.Header>
           <Modal.Body>
             <textarea
+              style={{ marginBottom: "20px" }}
               className='form-control'
               type='text'
               onChange={(e) => setDescription(e.target.value)}
               value={description}></textarea>
-            <select
-              value={priority}
-              className='form-select'
-              onChange={(e) => setPriority(e.target.value)}>
-              <option value='Low'>Low</option>
-              <option value='Medium'>Medium</option>
-              <option value='High'>High</option>
-              <option value='Urgent'>Urgent</option>
-            </select>
             <CommentList issue={issue} />
             <CommentForm issue={issue} />
           </Modal.Body>

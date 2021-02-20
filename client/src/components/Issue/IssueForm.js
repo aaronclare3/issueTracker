@@ -1,65 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { createIssue } from "../../redux/actions/issueActions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./IssueForm.css";
 import { getProject } from "../../redux/actions/projectActions";
 
-const IssueForm = ({ project }) => {
+const IssueForm = ({ status, handleForm }) => {
   const [issueTitle, setIssueTitle] = useState("");
-  const [issueDescription, setIssueDescription] = useState("");
-  const [issuePriority, setIssuePriority] = useState("Low");
+  // const [issueDescription, setIssueDescription] = useState("");
+  // const [issuePriority, setIssuePriority] = useState("Low");
   const dispatch = useDispatch();
+  const projectId = useSelector((state) => state.projectReducer.project._id);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(
-      createIssue({
-        title: issueTitle,
-        description: issueDescription,
-        priority: issuePriority,
-        status: "Unassigned",
-        project: project._id,
-      })
-    );
+    handleForm(issueTitle, status);
     setIssueTitle("");
-    setIssueDescription("");
-    setIssuePriority("Low");
+    // setIssueDescription("");
+    // setIssuePriority("Low");
   };
+
   return (
     <div className='issueFormContainer'>
-      <form className='issueForm form' onSubmit={(e) => handleSubmit(e)}>
-        <div>
-          <input
-            className='form-control'
-            type='text'
-            value={issueTitle}
-            onChange={(e) => setIssueTitle(e.target.value)}
-            placeholder='Issue/Bug...'
-          />
-        </div>
-        <div>
-          <input
-            className='form-control'
-            type='text'
-            value={issueDescription}
-            onChange={(e) => setIssueDescription(e.target.value)}
-            placeholder='Description...'
-          />
-        </div>
-        <div className='issueSelect'>
-          <select
-            className='form-select'
-            value={issuePriority}
-            onChange={(e) => setIssuePriority(e.target.value)}>
-            <option value='Low'>Low</option>
-            <option value='Medium'>Medium</option>
-            <option value='High'>High</option>
-            <option value='Urgent'>Urgent</option>
-          </select>
-        </div>
-        <button className='btn issueForm-btn' type='submit'>
-          Submit Issue
-        </button>
+      <form className='form' onSubmit={(e) => handleSubmit(e)}>
+        <input
+          onChange={(e) => setIssueTitle(e.target.value)}
+          value={issueTitle}
+          type='text'
+          className='form-control'
+          placeholder='new issue...'
+        />
       </form>
     </div>
   );
