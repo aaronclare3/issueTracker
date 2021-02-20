@@ -1,11 +1,25 @@
 import React, { useState } from "react";
 import IssueItem from "../IssueItem";
 import IssueForm from "../IssueForm";
+import { useDispatch } from "react-redux";
+import { createIssue } from "../../../redux/actions/issueActions";
 
-const CompletedList = ({ issues }) => {
+const CompletedList = ({ issues, projectId }) => {
   const [issueFormActive, setIssueFormActive] = useState(false);
+  const dispatch = useDispatch();
 
   const toggleIssueForm = () => {
+    setIssueFormActive((issueFormActive) => !issueFormActive);
+  };
+
+  const handleForm = (issueTitle, status) => {
+    dispatch(
+      createIssue({
+        title: issueTitle,
+        status: status,
+        project: projectId,
+      })
+    );
     setIssueFormActive((issueFormActive) => !issueFormActive);
   };
   const renderCompleted =
@@ -28,7 +42,9 @@ const CompletedList = ({ issues }) => {
           Add Issue
         </p>
       )}
-      {issueFormActive && <IssueForm status={"Completed"} />}
+      {issueFormActive && (
+        <IssueForm status={"Completed"} handleForm={handleForm} />
+      )}
     </div>
   );
 };

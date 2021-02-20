@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./IssueForm.css";
 import { getProject } from "../../redux/actions/projectActions";
 
-const IssueForm = ({ status }) => {
+const IssueForm = ({ status, handleForm }) => {
   const [issueTitle, setIssueTitle] = useState("");
   // const [issueDescription, setIssueDescription] = useState("");
   // const [issuePriority, setIssuePriority] = useState("Low");
@@ -13,17 +13,12 @@ const IssueForm = ({ status }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(
-      createIssue({
-        title: issueTitle,
-        status: status,
-        project: projectId,
-      })
-    );
+    handleForm(issueTitle, status);
     setIssueTitle("");
     // setIssueDescription("");
     // setIssuePriority("Low");
   };
+
   return (
     <div className='issueFormContainer'>
       <form className='form' onSubmit={(e) => handleSubmit(e)}>

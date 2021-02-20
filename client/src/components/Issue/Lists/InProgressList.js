@@ -1,13 +1,28 @@
 import React, { useState } from "react";
 import IssueItem from "../IssueItem";
 import IssueForm from "../IssueForm";
+import { useDispatch } from "react-redux";
+import { createIssue } from "../../../redux/actions/issueActions";
 
-const InProgressList = ({ issues }) => {
+const InProgressList = ({ issues, projectId }) => {
   const [issueFormActive, setIssueFormActive] = useState(false);
+  const dispatch = useDispatch();
 
   const toggleIssueForm = () => {
     setIssueFormActive((issueFormActive) => !issueFormActive);
   };
+
+  const handleForm = (issueTitle, status) => {
+    dispatch(
+      createIssue({
+        title: issueTitle,
+        status: status,
+        project: projectId,
+      })
+    );
+    setIssueFormActive((issueFormActive) => !issueFormActive);
+  };
+
   const renderInProgress =
     issues.length > 0 &&
     issues.map((issue) => {
@@ -28,7 +43,9 @@ const InProgressList = ({ issues }) => {
           Add Issue
         </p>
       )}
-      {issueFormActive && <IssueForm status={"InProgress"} />}
+      {issueFormActive && (
+        <IssueForm handleForm={handleForm} status={"InProgress"} />
+      )}
     </div>
   );
 };

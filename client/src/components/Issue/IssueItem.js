@@ -44,8 +44,11 @@ const IssueItem = ({ issue }) => {
         newStatus = "Unassigned";
       }
     }
-    setStatus(newStatus);
     dispatch(updateIssue({ status: newStatus }, issue._id));
+    // this prevents the arrows from removing/adding before the item is moved to the next section
+    setTimeout(() => {
+      setStatus(newStatus);
+    }, 200);
   };
   return (
     <>
