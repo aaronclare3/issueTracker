@@ -1,31 +1,3 @@
-.dashboardProjects {
-    text-align: center;
-}
-
-.dashboardContainer {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    row-gap: 40px;
-}
-
-.dashboard-right {
-    text-align: center;
-    border-left: 1px solid #457BFF;
-}
-
-.dashboard-left {
-    text-align: center;
-}
-
-.dashboard-bottom {
-    border-top: 1px solid #457BFF;
-    grid-column-start: 1;
-    grid-column-end: 3;
-    margin: 0px 30px;
-    text-align: center;
-}
-
-.dashboard-bottom > h4 {
-    margin-top: 10px;
+.dashboard {
+    max-width: 1000px;
 }

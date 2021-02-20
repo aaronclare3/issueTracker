@@ -20,7 +20,7 @@ const Dashboard = ({ loggedIn, username }) => {
     return () => dispatch(clearProjects());
   }, []);
   return (
-    <div>
+    <div className='container dashboard'>
       <Slider />
       <ProjectList projectList={projects} />
     </div>

@@ -2,9 +2,6 @@ import React from "react";
 import ProjectItem from "./ProjectItem";
 
 const ProjectList = ({ projectList }) => {
-  const renderProjectList = projectList.map((proj) => {
-    return <ProjectItem key={proj._id} project={proj} />;
-  });
   return (
     <div className='projectListContainer container mt-4'>
       <div className='row'>
@@ -17,7 +14,7 @@ const ProjectList = ({ projectList }) => {
                 width='20'
                 height='20'
                 fill='currentColor'
-                class='bi bi-plus-circle-fill'
+                className='bi bi-plus-circle-fill'
                 viewBox='0 0 16 16'>
                 <path d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z' />
               </svg>
@@ -25,11 +22,23 @@ const ProjectList = ({ projectList }) => {
           </div>
         </div>
         <div className='col d-flex justify-content-end'>
-          <input type='text' placeholder='search placeholder' />
+          <div className='row'>
+            <input type='text' placeholder='search placeholder' />
+          </div>
         </div>
       </div>
-      <div className='row'>
-        <div className='col-6'>{projectList && renderProjectList}</div>
+      <div className='row mt-3'>
+        {projectList &&
+          projectList.map((proj, i) => {
+            return (
+              <div
+                className={`col-6 m-0 p-0 ${
+                  i % 2 === 0 ? "pr-2" : "pl-2"
+                } pb-3`}>
+                <ProjectItem key={proj._id} project={proj} />
+              </div>
+            );
+          })}
       </div>
     </div>
   );

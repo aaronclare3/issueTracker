@@ -1,25 +1,9 @@
-.projectItem{
-    max-width: 40vw;
-    margin: 30px auto;
-    box-shadow: black 0px 7px 29px 0px;
-    background: #374C63;
-    border-radius: 20px;
+.projectItem {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 5px;
+    height: 200px;
+    cursor: pointer;
 }
 
-.projectItem:hover {
-    box-shadow: 0px 5px 10px #457BFF;
-    border-radius: 20px;
-}
-
-.projectItem > a {
-    text-decoration: none;
-}
-
-.projectItem > .bi-x-square-fill:hover {
-    color: rgba(255, 0, 0, 0.653);
-}
-
-.projectItemText {
-    text-align: center;
-    color: white;
+.bi-three-dots-vertical:hover {
+    color: #43A745;
 }
