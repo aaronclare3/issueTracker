@@ -12,6 +12,7 @@ const IssueModal = ({ issue, show, handleClose }) => {
   const [description, setDescription] = useState(issue && issue.description);
   const [priority, setPriority] = useState(issue && issue.priority);
   const dispatch = useDispatch();
+
   useEffect(() => {
     if (!issue.createdBy.username) {
       dispatch(getProject(issue.project));

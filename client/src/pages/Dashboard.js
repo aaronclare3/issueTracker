@@ -28,11 +28,17 @@ const Dashboard = ({ loggedIn, username }) => {
 
   return (
     <div className='container dashboard'>
-      <Slider getListFromSlider={getListFromSlider} />
-      {list != null ? (
-        <ProjectList list={list} explore={explore} />
+      {loggedIn ? (
+        <>
+          <Slider getListFromSlider={getListFromSlider} />
+          {list != null ? (
+            <ProjectList list={list} explore={explore} />
+          ) : (
+            <ProjectList list={userProjects} explore={explore} />
+          )}
+        </>
       ) : (
-        <ProjectList list={userProjects} explore={explore} />
+        <Redirect to='/' />
       )}
     </div>
 

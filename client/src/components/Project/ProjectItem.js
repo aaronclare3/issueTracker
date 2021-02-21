@@ -48,7 +48,7 @@ const ProjectItem = ({ project }) => {
             }
             /{project.issues.length} issues completed
           </div>
-          <div className='col d-flex justify-content-end '>hi</div>
+          <div className='col d-flex justify-content-end '></div>
         </div>
       </div>
     </div>

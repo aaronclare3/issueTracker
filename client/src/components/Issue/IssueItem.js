@@ -103,7 +103,7 @@ const IssueItem = ({ issue }) => {
           </div>
         )}
       </div>
-      {handleShow && (
+      {show && (
         <IssueModal issue={issue} show={show} handleClose={handleClose} />
       )}
     </>

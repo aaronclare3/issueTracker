@@ -1,9 +1,18 @@
 import React, { useEffect, useState } from "react";
 import ProjectItem from "./ProjectItem";
+import ProjectForm from "./ProjectForm";
 import Searchbar from "../Searchbar";
 
 const ProjectList = ({ list, explore }) => {
   const [searchedList, setSearchedList] = useState(null);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => {
+    setShow(false);
+  };
+  const handleShow = () => {
+    setShow(true);
+  };
 
   const passUpdatedList = (updatedListFromSearch) => {
     setSearchedList(updatedListFromSearch);
@@ -19,6 +28,7 @@ const ProjectList = ({ list, explore }) => {
             <span className='mt-2'>
               {!explore && (
                 <svg
+                  onClick={handleShow}
                   xmlns='http://www.w3.org/2000/svg'
                   width='20'
                   height='20'
@@ -48,6 +58,7 @@ const ProjectList = ({ list, explore }) => {
           );
         })}
       </div>
+      {show && <ProjectForm handleClose={handleClose} show={show} />}
     </div>
   );
 };
