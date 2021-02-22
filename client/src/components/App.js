@@ -11,7 +11,6 @@ import { checkLoggedIn } from "../redux/actions/userActions";
 import {
   getAllProjects,
   getAllUsersProjects,
-  clearProjects,
 } from "../redux/actions/projectActions";
 import "./App.css";
 import axios from "axios";
@@ -19,27 +18,39 @@ import axios from "axios";
 axios.defaults.withCredentials = true;
 
 const App = () => {
-  const loggedIn = useSelector((state) => state.projectReducer.loggedIn);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const isLoggedIn = useSelector((state) => state.projectReducer.loggedIn);
   const username = useSelector((state) => state.projectReducer.username);
   const dispatch = useDispatch();
+  useEffect(() => {
+    if (loggedIn) {
+      dispatch(getAllProjects());
+      dispatch(getAllUsersProjects());
+    }
+  }, [loggedIn]);
 
   useEffect(() => {
-    dispatch(getAllProjects());
-    dispatch(checkLoggedIn());
-    dispatch(getAllUsersProjects());
-    return () => dispatch(clearProjects());
-  }, []);
+    if (!loggedIn) {
+      dispatch(checkLoggedIn());
+    }
+    setLoggedInActive();
+  }, [isLoggedIn]);
+
+  const setLoggedInActive = () => {
+    setLoggedIn(isLoggedIn);
+  };
   return (
     <div className='App'>
       <Router>
         <Header />
-        {loggedIn && <Sidebar username={username} />}
+        <Sidebar />
         <Switch>
           <Route
             exact
             path='/project/:id'
-            username={username}
-            component={Project}
+            render={(props) => (
+              <Project {...props} username={username} loggedIn={loggedIn} />
+            )}
           />
           <Route
             path='/dashboard'
@@ -47,7 +58,11 @@ const App = () => {
               <Dashboard {...props} username={username} loggedIn={loggedIn} />
             )}
           />
-          <Route path='/register' render={(props) => <Register {...props} />} />
+          <Route
+            exact
+            path='/register'
+            render={(props) => <Register {...props} />}
+          />
           <Route exact path='/' render={(props) => <Login {...props} />} />
         </Switch>
       </Router>

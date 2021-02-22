@@ -6,7 +6,7 @@ import {
   DELETE_PROJECT,
   CREATE_PROJECT,
   CLEAR_PROJECT,
-  CLEAR_PROJECTS,
+  CLEAR_USER_PROJECTS,
 } from "../constants/projectConstants";
 import axios from "axios";
 
@@ -90,10 +90,10 @@ export const clearProject = (id) => async (dispatch) => {
   }
 };
 
-export const clearProjects = () => async (dispatch) => {
+export const clearUserProjects = () => async (dispatch) => {
   try {
     dispatch({
-      type: CLEAR_PROJECTS,
+      type: CLEAR_USER_PROJECTS,
     });
   } catch (error) {
     console.log(error);

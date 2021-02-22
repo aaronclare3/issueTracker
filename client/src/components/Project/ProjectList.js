@@ -2,10 +2,20 @@ import React, { useEffect, useState } from "react";
 import ProjectItem from "./ProjectItem";
 import ProjectForm from "./ProjectForm";
 import Searchbar from "../Searchbar";
+import { useSelector, useDispatch } from "react-redux";
+import { getAllProjects } from "../../redux/actions/projectActions";
 
-const ProjectList = ({ list, explore }) => {
+const ProjectList = ({ userProjects, explore, exploreProjects, username }) => {
   const [searchedList, setSearchedList] = useState(null);
+  // show addProject modal
   const [show, setShow] = useState(false);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (explore) {
+      dispatch(getAllProjects());
+    }
+  }, [explore]);
 
   const handleClose = () => {
     setShow(false);
@@ -23,7 +33,9 @@ const ProjectList = ({ list, explore }) => {
         <div className='col'>
           <div className='row'>
             <h3 className='mr-2'>
-              {explore ? "Explore Community Projects" : "Your Projects"}
+              {explore
+                ? "Explore Community Projects"
+                : `${username}'s Projects`}
             </h3>
             <span className='mt-2'>
               {!explore && (
@@ -43,12 +55,27 @@ const ProjectList = ({ list, explore }) => {
         </div>
         <div className='col d-flex justify-content-end'>
           <div className='row'>
-            <Searchbar projects={list} passUpdatedList={passUpdatedList} />
+            {explore ? (
+              <Searchbar
+                projects={exploreProjects}
+                passUpdatedList={passUpdatedList}
+              />
+            ) : (
+              <Searchbar
+                projects={userProjects}
+                passUpdatedList={passUpdatedList}
+              />
+            )}
           </div>
         </div>
       </div>
       <div className='row mt-3'>
-        {(searchedList ? searchedList : list).map((proj, i) => {
+        {(searchedList
+          ? searchedList
+          : explore
+          ? exploreProjects
+          : userProjects
+        ).map((proj, i) => {
           return (
             <div
               key={proj._id}

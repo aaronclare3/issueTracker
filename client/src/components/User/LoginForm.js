@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 import { loginUser } from "../../redux/actions/userActions.js";
+import { getAllUsersProjects } from "../../redux/actions/projectActions";
 import "./LoginForm.css";
 
 const LoginForm = () => {

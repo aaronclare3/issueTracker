@@ -1,7 +1,7 @@
 let initialState = {
   projects: [],
   project: {},
-  loggedIn: false,
+  loggedIn: undefined,
   username: "",
   exploreProjects: [],
 };
@@ -9,7 +9,11 @@ let initialState = {
 export const projectReducer = (state = initialState, action) => {
   switch (action.type) {
     case "CREATE_PROJECT":
-      return { ...state, projects: [...state.projects, action.payload] };
+      return {
+        ...state,
+        projects: [...state.projects, action.payload],
+        exploreProjects: [...state.exploreProjects, action.payload],
+      };
     case "GET_ALL_USERS_PROJECTS":
       return { ...state, projects: action.payload };
     case "GET_ALL_PROJECTS":
@@ -24,7 +28,7 @@ export const projectReducer = (state = initialState, action) => {
       return { ...state, projects: listWithoutProject };
     case "CLEAR_PROJECT":
       return { ...state, project: {} };
-    case "CLEAR_PROJECTS":
+    case "CLEAR_USER_PROJECTS":
       return { ...state, projects: [] };
     case "CREATE_ISSUE":
       const newIssue = action.payload;
@@ -64,6 +68,7 @@ export const projectReducer = (state = initialState, action) => {
         ...state,
         loggedIn: false,
         username: "",
+        projects: [],
       };
     case "LOGIN_USER":
       return {
