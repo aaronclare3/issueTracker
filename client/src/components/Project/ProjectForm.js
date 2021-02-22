@@ -1,71 +1,80 @@
 import React, { useState } from "react";
+import { Modal, Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { createProject } from "../../redux/actions/projectActions";
 import "./ProjectForm.css";
 
-const ProjectForm = () => {
+const ProjectForm = ({ show, handleClose }) => {
   const [projectTitle, setProjectTitle] = useState("");
   const [projectDescription, setProjectDescription] = useState("");
   const [projectCodeLink, setProjectCodeLink] = useState("");
   const dispatch = useDispatch();
 
-  const handleTitleChange = (val) => {
-    setProjectTitle(val);
-  };
-  const handleDescriptionChange = (val) => {
-    setProjectDescription(val);
-  };
-  const handleCodeLinkChange = (val) => {
-    setProjectCodeLink(val);
+  const handleModalClose = (option) => {
+    if (option === "cancel") {
+      // if user isn't saving we want to reset modal back to what it was
+      handleClose();
+    } else if (option === "create") {
+      // if they do save, handle add and close
+      dispatch(
+        createProject({
+          title: projectTitle,
+          description: projectDescription,
+          codeLink: projectCodeLink,
+        })
+      );
+      setProjectTitle("");
+      setProjectDescription("");
+      setProjectCodeLink("");
+      handleClose();
+    }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const project = {
-      title: projectTitle,
-      description: projectDescription,
-      codeLink: projectCodeLink,
-    };
-    dispatch(createProject(project));
-    setProjectTitle("");
-    setProjectDescription("");
-    setProjectCodeLink("");
-  };
   return (
-    <div>
-      <form className='projectForm form' onSubmit={(e) => handleSubmit(e)}>
-        <div className='form-group'>
-          <input
-            className='form-control'
-            type='text'
-            placeholder='Title...'
-            value={projectTitle}
-            onChange={(e) => handleTitleChange(e.target.value)}
-          />
+    <>
+      <Modal show={show} onHide={handleClose}>
+        <div className='projectModal'>
+          <Modal.Body>
+            <input
+              style={{ width: "100%", marginBottom: "20px" }}
+              className='form-control'
+              type='text'
+              placeholder='Project Title'
+              onChange={(e) => setProjectTitle(e.target.value)}
+              value={projectTitle}
+            />
+            <input
+              placeholder='Project Description'
+              style={{ marginBottom: "20px" }}
+              className='form-control'
+              type='text'
+              onChange={(e) => setProjectDescription(e.target.value)}
+              value={projectDescription}
+            />
+            <input
+              placeholder='Link your code repository'
+              style={{ marginBottom: "20px" }}
+              className='form-control'
+              type='text'
+              onChange={(e) => setProjectCodeLink(e.target.value)}
+              value={projectCodeLink}
+            />
+          </Modal.Body>
+          <Modal.Footer>
+            <Button
+              variant='secondary'
+              onClick={() => handleModalClose("cancel")}>
+              Close
+            </Button>
+            <Button
+              variant='primary'
+              onClick={() => handleModalClose("create")}>
+              Save Changes
+            </Button>
+          </Modal.Footer>
         </div>
-        <div className='form-group'>
-          <input
-            className='form-control'
-            type='text'
-            placeholder='Description...'
-            value={projectDescription}
-            onChange={(e) => handleDescriptionChange(e.target.value)}
-          />
-        </div>
-        <div className='form-group'>
-          <input
-            className='form-control'
-            type='text'
-            placeholder='Link to code (optional)'
-            value={projectCodeLink}
-            onChange={(e) => handleCodeLinkChange(e.target.value)}
-          />
-        </div>
-        <button className='projectForm-btn btn' type='submit'>
-          ADD BOARD
-        </button>
-      </form>
-    </div>
+      </Modal>
+    </>
   );
 };
 

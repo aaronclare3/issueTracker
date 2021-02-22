@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { createComment } from "../../redux/actions/commentActions";
 import { useDispatch } from "react-redux";
-import { getProject } from "../../redux/actions/projectActions";
 import "./CommentForm.css";
 
 const CommentForm = ({ issue }) => {

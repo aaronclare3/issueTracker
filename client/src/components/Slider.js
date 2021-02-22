@@ -9,8 +9,8 @@ const Slider = ({ getListFromSlider }) => {
     sendSliderStatusToDashboard(!sliderLeft);
   };
 
-  const sendSliderStatusToDashboard = (slide) => {
-    getListFromSlider(slide);
+  const sendSliderStatusToDashboard = (status) => {
+    getListFromSlider(status);
   };
 
   return (
