@@ -20,6 +20,7 @@ router.post("/", auth, async (req, res) => {
     const getProject = await Project.findById(saveIssue.project);
     getProject.issues.push(saveIssue);
     getProject.save();
+    console.log(issue.createdBy);
     res.status(201).json(saveIssue);
   } catch (error) {
     res.status(400).json({ message: error.message });

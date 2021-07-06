@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, Redirect, useHistory, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 //Icons
@@ -14,10 +14,10 @@ import "./Sidebar.css";
 // Actions
 import { logoutUser } from "../redux/actions/userActions";
 
-const Sidebar = () => {
+const Sidebar = ({ username }) => {
+  console.log(username);
   const [showSidebar, setShowSidebar] = useState(false);
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const toggleSidebar = () => {
     setShowSidebar((showSidebar) => !showSidebar);
@@ -59,7 +59,9 @@ const Sidebar = () => {
           </li>
         </ul>
         <div className='footerLinks'>
-          <div>{/* <p>{username.charAt(0).toUpperCase()}</p> */}</div>
+          <div>
+            <p>{username && username.charAt(0).toUpperCase()}</p>
+          </div>
           <h5 onClick={handleLogout}>Logout</h5>
         </div>
       </div>
@@ -67,4 +69,4 @@ const Sidebar = () => {
   );
 };
 
-export default withRouter(Sidebar);
+export default Sidebar;

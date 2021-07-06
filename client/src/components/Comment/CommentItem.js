@@ -16,7 +16,7 @@ const CommentItem = ({ comment, issue }) => {
       {comment.createdBy.username ? (
         <div style={{ marginTop: "-10px", marginBottom: "5px" }}>
           <small style={{ color: "lightgrey" }}>
-            {comment.createdBy.username} 10/22/20 at 3:53PM
+            {comment.createdBy.username} {comment.createdAt}
           </small>
         </div>
       ) : (

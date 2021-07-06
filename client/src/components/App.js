@@ -22,12 +22,6 @@ const App = () => {
   const isLoggedIn = useSelector((state) => state.projectReducer.loggedIn);
   const username = useSelector((state) => state.projectReducer.username);
   const dispatch = useDispatch();
-  useEffect(() => {
-    if (loggedIn) {
-      dispatch(getAllProjects());
-      dispatch(getAllUsersProjects());
-    }
-  }, [loggedIn]);
 
   useEffect(() => {
     if (!loggedIn) {
@@ -36,6 +30,13 @@ const App = () => {
     setLoggedInActive();
   }, [isLoggedIn]);
 
+  useEffect(() => {
+    if (loggedIn) {
+      dispatch(getAllProjects());
+      dispatch(getAllUsersProjects());
+    }
+  }, [loggedIn]);
+
   const setLoggedInActive = () => {
     setLoggedIn(isLoggedIn);
   };
@@ -43,7 +44,7 @@ const App = () => {
     <div className='App'>
       <Router>
         <Header />
-        <Sidebar />
+        {username != undefined && <Sidebar username={username} />}
         <Switch>
           <Route
             exact

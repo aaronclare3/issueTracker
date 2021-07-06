@@ -2,7 +2,7 @@ let initialState = {
   projects: [],
   project: {},
   loggedIn: undefined,
-  username: "",
+  username: undefined,
   exploreProjects: [],
 };
 
