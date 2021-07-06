@@ -4,25 +4,28 @@ import { useDispatch } from "react-redux";
 import { deleteProject } from "../../redux/actions/projectActions";
 import "./ProjectEdit.css";
 
-const ProjectEdit = ({ show, projectId }) => {
+const ProjectEdit = ({ show, projectId, handleClose }) => {
   const dispatch = useDispatch();
 
-  const deleteProject = () => {
-    console.log("dispatching delete!", projectId);
-    dispatch(deleteProject(projectId));
+  const handleModalClose = (option) => {
+    if (option === "cancel") {
+      handleClose();
+    } else if (option === "delete") {
+      dispatch(deleteProject(projectId));
+      handleClose();
+    }
   };
 
   return (
     <>
-      <Modal show={show}>
+      <Modal show={show} onHide={handleClose}>
         <Modal.Body>
-          {/* <Button variant='secondary' onClick={() => handleModalClose("cancel")}>
+          <Button
+            variant='secondary'
+            onClick={() => handleModalClose("cancel")}>
             Close
-        </Button>
-        <Button variant='primary' onClick={() => handleModalClose("create")}>
-            Save Changes
-        </Button> */}
-          <Button variant='primary' onClick={() => deleteProject()}>
+          </Button>
+          <Button variant='primary' onClick={() => handleModalClose("delete")}>
             Delete Project
           </Button>
         </Modal.Body>
