@@ -134,8 +134,12 @@ router.patch("/:id", auth, async (req, res) => {
 // delete a project
 router.delete("/:id", auth, async (req, res) => {
   try {
-    const project = await Project.findByIdAndDelete(req.params.id);
-    res.json(project);
+    let deleteProject;
+    const project = await Project.findById(req.params.id);
+    if (req.user == project.creator) {
+      deleteProject = await Project.findByIdAndDelete(req.params.id);
+      res.json(project);
+    }
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
