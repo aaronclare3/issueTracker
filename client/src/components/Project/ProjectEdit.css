@@ -1,0 +1,53 @@
+.projectEdit {
+    background: #334860;
+    width: 75%;
+    margin: 30px auto;
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid white;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.projectEdit > div {
+    margin: 0px 0px 10px 0px;
+}
+
+.projectEdit > div > input {
+    background: #2C3D51;
+    color: #457BFF;
+    font-weight: bold;
+    border: 1px solid white;
+}
+
+.projectEdit > div > input::placeholder {
+    color: white;
+    font-weight: bold;
+}
+.projectEdit > div > input:focus::placeholder {
+    color: #457BFF;
+    font-weight: bold;
+}
+
+.projectEdit > div > input:focus {
+    border: 1px solid #457BFF;
+    background: #2C3D51;
+    caret-color: #457BFF;
+    color: #457BFF;
+    font-weight: bold;
+}
+
+.projectEdit-btn {
+    background: #2C3D51;
+    width: 100%;
+    color: white;
+    font-weight: bold;
+    border: 1px solid;
+}
+
+.projectEdit-btn:hover {
+    border: 1px solid #457BFF;
+    color: #457BFF;
+}
+
+
+

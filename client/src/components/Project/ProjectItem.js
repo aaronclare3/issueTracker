@@ -1,18 +1,17 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "./ProjectItem.css";
+import ProjectEdit from "./ProjectEdit";
 import { deleteProject } from "../../redux/actions/projectActions";
 import { useDispatch } from "react-redux";
 
 const ProjectItem = ({ project }) => {
   const [hover, setHover] = useState(false);
+  const [show, setShow] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
   const routeToProject = () => {
     history.push(`/project/${project._id}`);
-  };
-  const handleShow = () => {
-    console.log("handling show!!!");
   };
   return (
     <div
@@ -28,7 +27,7 @@ const ProjectItem = ({ project }) => {
             className='ml-auto col-2 d-flex align-items-start justify-content-end'>
             {hover && (
               <svg
-                onClick={handleShow}
+                onClick={(e) => setShow(true)}
                 xmlns='http://www.w3.org/2000/svg'
                 width='16'
                 height='16'
@@ -51,6 +50,7 @@ const ProjectItem = ({ project }) => {
           <div className='col d-flex justify-content-end '></div>
         </div>
       </div>
+      {show && <ProjectEdit show={show} projectId={project._id} />}
     </div>
   );
 };
