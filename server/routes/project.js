@@ -138,7 +138,7 @@ router.delete("/:id", auth, async (req, res) => {
     const project = await Project.findById(req.params.id);
     if (req.user == project.creator) {
       deleteProject = await Project.findByIdAndDelete(req.params.id);
-      res.json(project);
+      res.json(deleteProject);
     }
   } catch (error) {
     res.status(500).json({ message: error.message });
